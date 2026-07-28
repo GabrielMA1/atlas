@@ -4,11 +4,25 @@ Test date: July 28, 2026
 
 ## Executive result
 
-The rebuilt static site passes the repository audit, JavaScript syntax check, route checks, browser console check, responsive viewport matrix, theme and mobile-menu interaction tests, card-alignment checks, and external destination verification.
+The rebuilt and content-aligned static site passes the repository audit, JavaScript syntax check, route checks, browser console check, responsive viewport matrix, theme and mobile-menu interaction tests, card-alignment checks, and external destination verification.
 
 Final disposition: **CONDITIONAL PASS — READY AFTER LISTED CHECKS**
 
 The remaining checks require browser or platform capabilities unavailable in the current automated environment and are listed at the end of this report.
+
+## Content-alignment regression update
+
+The July 28, 2026 regression pass confirmed:
+
+- The hero eyebrow uses `Digital Presence · Advertising Management · Practical Systems`.
+- The approved headline remains unchanged.
+- The hero support, focus cards, About copy, skills, metadata, Open Graph copy, X copy, Person schema, accessible list labels, and shared footer descriptions align with the approved focus model.
+- `Advertising Management` is used consistently; `Ads Management` is not present.
+- Business IT, cloud tools, integrations, automation, and practical AI remain supporting details beneath Practical Systems.
+- Advertising scope remains focused on Google Search or Meta advertising without guarantees, unlimited-platform claims, pricing, or package cards.
+- Commercial brand, website, and advertising inquiries still route to `https://rielart.com/contact/#project-inquiry`.
+- RielArt and Client Portal roles and destinations remain unchanged.
+- No CSS, JavaScript, portrait, navigation, or layout change was made for this update.
 
 ## Automated repository audit
 
@@ -32,6 +46,10 @@ Result: PASS
 - Legacy fallback canonicals and visible continuation links correct
 - No duplicate IDs
 - No flagged outdated public positioning
+- Approved hero phrase and three focus headings present
+- Homepage metadata and social metadata match the approved positioning
+- Person `jobTitle` and exact approved `knowsAbout` vocabulary present
+- RielArt commercial inquiry route preserved
 - Deployment exclusions present
 - CSS braces balanced
 
@@ -89,10 +107,13 @@ Visual inspection was completed for desktop and mobile hero layouts, professiona
 
 At 1440 × 900:
 
-- All three professional-focus cards had matching top, bottom, and height measurements.
+- All three professional-focus cards had matching top, bottom, and 507-pixel height measurements.
+- Description regions remained comparable and list areas stayed aligned.
 - Both selected-work cards had matching top, bottom, and height measurements.
 - All three writing cards had matching heights and action positions.
 - All three contact cards had matching heights and action positions.
+
+Across the mobile viewport matrix, focus cards stacked naturally, used content-driven heights, and reported no scroll-height clipping.
 
 ## Theme and navigation interactions
 

@@ -124,3 +124,33 @@ Added `tools/site_audit.py` using Python standard-library parsing. It checks:
 - `REDESIGN-NOTES.md` — neutral personal editorial design description
 - `images/logo.png` — production resize and optimization
 - `images/rielart-logo.png` — production resize and optimization
+
+## Content-alignment update
+
+On July 28, 2026, the approved primary focus model changed from Digital Strategy, IT Systems, and Practical AI to:
+
+1. Digital Presence
+2. Advertising Management
+3. Practical Systems
+
+The update preserved the visual system, layout, portrait, navigation, themes, responsive behavior, accessibility behavior, performance profile, RielArt relationship, Client Portal description, article destinations, and URL structure.
+
+Business IT, cloud tools, integrations, automation, and practical AI remain supporting details beneath Practical Systems. Advertising Management is limited to focused Google Search or Meta advertising. No prices, packages, guarantees, checkout behavior, or additional commercial CTAs were added.
+
+### Files modified for the content-alignment update
+
+- `index.html` — hero, focus cards, supporting copy, skills, metadata, social metadata, Person schema, accessibility labels, and footer positioning
+- `404.html` — shared footer positioning
+- `privacy-policy/index.html` — shared footer positioning
+- `terms-conditions/index.html` — shared footer positioning
+- `blog/index.html` — shared footer positioning
+- `blog/ai-chatbots-cut-support-costs/index.html` — shared footer positioning
+- `blog/website-costing-you-leads/index.html` — shared footer positioning
+- `blog/direct-mail-outperforms-digital-ads-toronto/index.html` — shared footer positioning
+- `GMACOVEI-STRATEGY.md` — approved positioning and scope rules
+- `GMACOVEI-COPY-MAP.md` — hero, focus, advertising scope, and footer copy map
+- `GMACOVEI-INFORMATION-ARCHITECTURE.md` — approved focus-card labels and supporting hierarchy
+- `README.md` — current site-role summary
+- `tools/site_audit.py` — approved-positioning, social metadata, schema vocabulary, and commercial-routing assertions
+- `GMACOVEI-QA-REPORT.md` — content-alignment regression results
+- `GMACOVEI-IMPLEMENTATION-LOG.md` — complete update record and file list

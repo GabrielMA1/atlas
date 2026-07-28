@@ -29,10 +29,12 @@ The logo and Gabriel Macovei wordmark link to `/`, so "Home" is not repeated in 
 - Section ID: `focus`
 - H2: What I work across.
 - Cards:
-  - Digital strategy
-  - IT systems
-  - Automation and practical AI
+  - Digital Presence
+  - Advertising Management
+  - Practical Systems
 - Purpose: Describe capability areas rather than packages.
+
+Business IT, cloud tools, integrations, automation, workflows, and practical AI remain supporting details beneath Practical Systems. Advertising Management is limited to focused Google Search or Meta advertising, with commercial inquiries routed to RielArt.
 
 ### 3. Selected work
 

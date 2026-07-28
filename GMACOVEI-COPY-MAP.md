@@ -19,7 +19,9 @@ Last updated: July 28, 2026
 - New headline: I turn complex digital work into clear, usable systems.
 - Current purpose: Sell broad digital and AI work
 - New purpose: Establish Gabriel's personal professional positioning
-- Retained: Portrait, Toronto context, web/IT/automation/AI subject areas
+- Approved eyebrow: Digital Presence · Advertising Management · Practical Systems
+- Approved support: I'm Gabriel Macovei, a Toronto-based digital professional working across digital presence, advertising management, business technology, automation, and practical systems.
+- Retained: Portrait, Toronto context, web, business technology, automation, integrations, and practical AI subject areas
 - Removed: "AI Expert"; package-style contact row; hard-coded headline line spans
 - Primary CTA: Explore My Work
 - Primary destination: `#work`
@@ -32,7 +34,9 @@ Last updated: July 28, 2026
 - New headline: What I work across.
 - Current purpose: Present Digital Presence and AI & Automation as offers
 - New purpose: Explain three professional capability areas
-- Retained: Digital strategy, websites, IT, integrations, automation, analytics, practical AI
+- Approved focus areas: Digital Presence; Advertising Management; Practical Systems
+- Retained as supporting detail: Website strategy, user experience, analytics, business IT, cloud tools, integrations, automation, and practical AI
+- Advertising scope: Focused Google Search or Meta advertising, including campaign structure, targeting, messaging, conversion tracking, performance review, and practical optimization
 - Removed: Commercial package framing, checklist deliverables, "Explore service" links
 - CTA: None
 - Destination: Not applicable
@@ -112,7 +116,7 @@ Last updated: July 28, 2026
 ## Footer
 
 - Current headline/description: Personal hub for Gabriel Macovei — digital strategist, IT professional, and founder of RielArt.
-- New headline/description: Personal website of Gabriel Macovei — digital strategy, IT systems, and practical AI.
+- New headline/description: Personal website of Gabriel Macovei — digital presence, advertising management, and practical systems.
 - Current purpose: Repeat identity and provide connect/legal groups
 - New purpose: Give a concise identity statement and complete footer navigation
 - Retained: Logo, legal links, LinkedIn, RielArt, decorative wordmark

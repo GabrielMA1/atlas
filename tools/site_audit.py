@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import struct
@@ -39,10 +40,9 @@ OUTDATED_PUBLIC_COPY = (
     "Digital Strategist & AI Expert",
     "AI Expert",
     "build, automate & grow",
-    "Digital Presence",
-    "Explore Digital Presence",
     "AI & Automation",
     "Explore AI & Automation",
+    "digital strategy, IT systems, and practical AI",
     "Brand · Web · AI systems",
     "Brand, web, and AI systems",
     "RielArt is where client projects live",
@@ -52,6 +52,42 @@ OUTDATED_PUBLIC_COPY = (
     "liquid-glass",
     "founder-led",
     "2027",
+)
+
+APPROVED_FOCUS_AREAS = (
+    "Digital Presence",
+    "Advertising Management",
+    "Practical Systems",
+)
+
+APPROVED_FOCUS_PHRASE = "Digital Presence · Advertising Management · Practical Systems"
+
+APPROVED_TITLE = (
+    "Gabriel Macovei | Digital Presence, Advertising Management & Practical Systems"
+)
+
+APPROVED_DESCRIPTION = (
+    "Gabriel Macovei is a Toronto-based digital professional focused on digital "
+    "presence, advertising management, business technology, automation, and practical systems."
+)
+
+APPROVED_KNOWS_ABOUT = {
+    "Digital presence",
+    "Website strategy",
+    "Advertising management",
+    "Google Ads",
+    "Meta advertising",
+    "Business IT",
+    "Cloud tools",
+    "Automation",
+    "Integrations",
+    "Practical artificial intelligence",
+}
+
+OUTDATED_FOCUS_HEADINGS = (
+    "Digital strategy",
+    "IT systems",
+    "Automation and practical AI",
 )
 
 REQUIRED_EXCLUSIONS = (
@@ -91,6 +127,7 @@ class PageParser(HTMLParser):
         self.in_json_ld = False
         self.json_ld_parts: list[str] = []
         self.meta_properties: dict[str, str] = {}
+        self.meta_names: dict[str, str] = {}
 
     @staticmethod
     def attrs_dict(attrs: list[tuple[str, str | None]]) -> dict[str, str]:
@@ -143,6 +180,8 @@ class PageParser(HTMLParser):
                 self.robots = content.lower().replace(" ", "")
             elif http_equiv == "refresh":
                 self.refresh = content
+            if name:
+                self.meta_names[name] = content
             if prop:
                 self.meta_properties[prop] = content
 
@@ -432,6 +471,78 @@ def check_json_ld(
         errors.append(f"Homepage: JSON-LD missing types: {', '.join(sorted(missing))}")
 
 
+def check_approved_positioning(
+    pages: dict[str, tuple[Path, PageParser, str]],
+    errors: list[str],
+) -> None:
+    homepage = pages.get("/")
+    if not homepage:
+        return
+
+    _, page, source = homepage
+    visible_text = " ".join(
+        html.unescape(re.sub(r"<[^>]+>", " ", source)).split()
+    )
+
+    if APPROVED_FOCUS_PHRASE not in visible_text:
+        errors.append(
+            f"Homepage: missing approved focus phrase {APPROVED_FOCUS_PHRASE!r}"
+        )
+
+    for area in APPROVED_FOCUS_AREAS:
+        heading_pattern = rf"<h3>\s*{re.escape(area)}\s*</h3>"
+        if not re.search(heading_pattern, source, flags=re.I):
+            errors.append(f"Homepage: missing approved focus heading {area!r}")
+
+    for heading in OUTDATED_FOCUS_HEADINGS:
+        heading_pattern = rf"<h3>\s*{re.escape(heading)}\s*</h3>"
+        if re.search(heading_pattern, source, flags=re.I):
+            errors.append(f"Homepage: outdated primary focus heading {heading!r}")
+
+    if page.title != APPROVED_TITLE:
+        errors.append(f"Homepage: title does not match approved positioning: {page.title!r}")
+    if page.description != APPROVED_DESCRIPTION:
+        errors.append("Homepage: meta description does not match approved positioning")
+    if page.meta_properties.get("og:title") != APPROVED_TITLE:
+        errors.append("Homepage: Open Graph title does not match approved positioning")
+    if page.meta_properties.get("og:description") != APPROVED_DESCRIPTION:
+        errors.append("Homepage: Open Graph description does not match approved positioning")
+    if page.meta_names.get("twitter:title") != APPROVED_TITLE:
+        errors.append("Homepage: X title does not match approved positioning")
+    if page.meta_names.get("twitter:description") != APPROVED_DESCRIPTION:
+        errors.append("Homepage: X description does not match approved positioning")
+
+    person_nodes: list[dict[str, object]] = []
+    for block in page.json_ld:
+        try:
+            parsed = json.loads(block)
+        except json.JSONDecodeError:
+            continue
+        nodes = parsed.get("@graph", [parsed]) if isinstance(parsed, dict) else []
+        person_nodes.extend(
+            node
+            for node in nodes
+            if isinstance(node, dict) and node.get("@type") == "Person"
+        )
+
+    if len(person_nodes) != 1:
+        errors.append(f"Homepage: expected one Person schema node, found {len(person_nodes)}")
+    else:
+        person = person_nodes[0]
+        if person.get("jobTitle") != "Digital Professional":
+            errors.append("Homepage: Person jobTitle must be 'Digital Professional'")
+        knows_about = person.get("knowsAbout")
+        actual = set(knows_about) if isinstance(knows_about, list) else set()
+        if actual != APPROVED_KNOWS_ABOUT:
+            errors.append(
+                "Homepage: Person knowsAbout does not match approved focus vocabulary"
+            )
+
+    inquiry_url = "https://rielart.com/contact/#project-inquiry"
+    if not any(anchor.get("href") == inquiry_url for anchor in page.anchors):
+        errors.append("Homepage: RielArt commercial inquiry route changed or is missing")
+
+
 def check_sitemap(
     root: Path,
     pages: dict[str, tuple[Path, PageParser, str]],
@@ -525,6 +636,7 @@ def main() -> int:
     check_links_and_assets(root, pages, errors)
     check_images(root, pages, errors)
     check_json_ld(pages, errors)
+    check_approved_positioning(pages, errors)
     check_sitemap(root, pages, errors)
     check_outdated_copy(pages, root, errors)
     check_deployment_exclusions(root, errors)

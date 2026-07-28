@@ -4,7 +4,7 @@ Static source for Gabriel Macovei's personal professional website.
 
 ## Site role
 
-gmacovei.com explains Gabriel's professional focus, selected work, working approach, writing, and contact routes. Commercial brand, website, advertising, pricing, and project-inquiry information belongs on RielArt. Approved RielArt clients use the separate Client Portal.
+gmacovei.com explains Gabriel's professional focus across Digital Presence, Advertising Management, and Practical Systems, along with selected work, working approach, writing, and contact routes. These are professional areas rather than public service packages. Commercial brand, website, advertising, pricing, and project-inquiry information belongs on RielArt. Approved RielArt clients use the separate Client Portal.
 
 ## Technology
 

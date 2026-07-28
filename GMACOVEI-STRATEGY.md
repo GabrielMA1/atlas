@@ -51,12 +51,14 @@ The secure workspace for approved RielArt clients. Live browser inspection on Ju
 
 ## Approved personal positioning
 
-- Eyebrow: **Digital Strategy · IT Systems · Practical AI**
+- Eyebrow: **Digital Presence · Advertising Management · Practical Systems**
 - Headline: **I turn complex digital work into clear, usable systems.**
-- Supporting copy: **I'm Gabriel Macovei, a Toronto-based digital strategist and IT professional working across websites, cloud tools, automation, and practical AI.**
-- Job title for metadata and structured data: **Digital Strategist and IT Professional**
+- Supporting copy: **I'm Gabriel Macovei, a Toronto-based digital professional working across digital presence, advertising management, business technology, automation, and practical systems.**
+- Job title for structured data: **Digital Professional**
 
-AI remains a legitimate capability within a broader profile. It is not the primary title or the central RielArt commercial pillar on this site.
+Business IT, cloud tools, integrations, automation, and practical AI remain accurate supporting capabilities beneath Practical Systems. Advertising Management refers specifically to focused Google Search or Meta advertising and does not imply every platform, unlimited campaigns, guaranteed results, or large creative-production services.
+
+These are professional focus areas, not public packages. Commercial brand, website, and advertising inquiries continue to route to RielArt.
 
 ## Homepage architecture
 
