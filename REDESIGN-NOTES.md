@@ -1,22 +1,25 @@
-# GMACOVEI 2027 Redesign Notes
+# GMACOVEI Personal-Site Design Notes
 
-This build applies the final RielArt 2027 liquid-glass design system to gmacovei.com while keeping Gabriel Macovei's personal-site role and existing content architecture.
+The current interface uses the shared RielArt brand foundation—deep navy, blue accents, light and dark modes—through a distinct personal editorial layer.
 
-## Design changes
+## Direction
 
-- Floating translucent navigation matching RielArt.com
-- Shared light/dark color system, glass surfaces, gradients, borders, shadows, and motion
-- Editorial hero typography and spacing
-- Restored portrait-led hero with a refined glass orbit treatment
-- Restored the four-value row: Strategy first, AI with purpose, Outcome focused, Reliable partner
-- Redesigned cards, RielArt feature, skills, industries, outcomes, insights, FAQ, contact, legal pages, redirects, and footer
-- Responsive desktop, tablet, and mobile layouts
-- Reduced-motion support and keyboard-friendly mobile navigation
+- Portrait-led personal hero
+- Strong editorial typography
+- Calm light and dark surfaces
+- Restrained borders and shadows
+- Clear white space
+- Selective cards only where comparison or grouping benefits
+- Subtle reveal motion with a reduced-motion alternative
 
-## Content preserved
+## Preserved identity
 
-The homepage's original visible wording is preserved, apart from capitalization of the displayed name and the year being populated automatically. Existing images, domain settings, metadata, legal content, redirects, and contact links remain in place.
+- Gabriel Macovei portrait
+- GMACOVEI logo and wordmark
+- Navy and blue palette
+- Theme persistence
+- Responsive navigation
 
-## Final hybrid revision
+## Deliberate differences from RielArt
 
-The final package keeps the original personal-site presentation for the hero, services, about, RielArt business feature, and contact area. The navigation now follows the current RielArt floating liquid-glass design and interaction system across every page.
+gmacovei.com is a personal professional profile, not a commercial agency site. It does not reproduce pricing, service packages, checkout, detailed service pages, or a project inquiry form.

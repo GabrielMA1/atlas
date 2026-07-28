@@ -1,0 +1,15 @@
+exclude:
+  - .gitattributes
+  - README.md
+  - REDESIGN-NOTES.md
+  - QA-REPORT.md
+  - GMACOVEI-STRATEGY.md
+  - GMACOVEI-INFORMATION-ARCHITECTURE.md
+  - GMACOVEI-COPY-MAP.md
+  - GMACOVEI-URL-MIGRATION.md
+  - GMACOVEI-IMPLEMENTATION-LOG.md
+  - GMACOVEI-QA-REPORT.md
+  - GMACOVEI-DEPLOYMENT-MANIFEST.txt
+  - tools
+  - images/gabriel-macovei.jpg
+  - images/rielart-preview.jpg

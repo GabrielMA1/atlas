@@ -1,0 +1,74 @@
+GMACOVEI DEPLOYMENT MANIFEST
+Generated: 2026-07-28
+
+DEPLOYMENT MODEL
+- Static GitHub Pages-compatible site
+- Custom domain preserved through CNAME
+- Jekyll exclusions controlled by _config.yml
+- No build system, server runtime, database, analytics, or environment variables
+
+PUBLIC ROOT FILES
+- index.html
+- 404.html
+- CNAME
+- robots.txt
+- sitemap.xml
+- _redirects
+
+PUBLIC ROUTE FILES
+- privacy-policy/index.html
+- terms-conditions/index.html
+- blog/index.html
+- blog/ai-chatbots-cut-support-costs/index.html
+- blog/website-costing-you-leads/index.html
+- blog/direct-mail-outperforms-digital-ads-toronto/index.html
+
+PUBLIC ASSETS
+- assets/css/site.css
+- assets/js/site.js
+- images/apple-touch-icon.png
+- images/favicon.png
+- images/gabriel-macovei.webp
+- images/gabriel-macovei-og.jpg
+- images/logo.png
+- images/rielart-logo.png
+
+BUILD CONFIGURATION INPUT
+- _config.yml
+
+EXCLUDED FROM THE PUBLISHED SITE
+- .git/
+- .gitattributes
+- README.md
+- REDESIGN-NOTES.md
+- QA-REPORT.md
+- GMACOVEI-STRATEGY.md
+- GMACOVEI-INFORMATION-ARCHITECTURE.md
+- GMACOVEI-COPY-MAP.md
+- GMACOVEI-URL-MIGRATION.md
+- GMACOVEI-IMPLEMENTATION-LOG.md
+- GMACOVEI-QA-REPORT.md
+- GMACOVEI-DEPLOYMENT-MANIFEST.txt
+- tools/
+- images/gabriel-macovei.jpg
+- images/rielart-preview.jpg
+
+PRESERVE
+- CNAME must remain exactly: gmacovei.com
+- HTTPS-compatible absolute external links
+- Static legacy fallback pages
+- _redirects for hosts or CDNs that support the file
+
+HOSTING NOTE
+Standard GitHub Pages does not interpret _redirects. Publishing this source alone
+does not prove a server-level HTTP 301. Configure and verify permanent redirects
+at the active CDN or hosting layer when true 301 behavior is required.
+
+POST-DEPLOYMENT CHECKS
+- Confirm https://gmacovei.com/ returns the rebuilt homepage
+- Confirm robots.txt and sitemap.xml are reachable
+- Confirm Privacy, Terms, 404, and all four legacy fallback routes
+- Confirm internal Markdown files and tools are not published
+- Confirm CNAME and HTTPS
+- Confirm RielArt, Client Portal, article, LinkedIn, and email destinations
+- Confirm real HTTP status codes for legacy redirects when configured

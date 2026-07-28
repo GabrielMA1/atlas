@@ -1,30 +1,40 @@
-# gmacovei.com — 2027 RielArt Design Edition
+# gmacovei.com
 
-This package applies the final RielArt 2027 liquid-glass visual system to the Gabriel Macovei personal website while preserving the personal-site positioning, content, portrait, calls to action, legal pages, and legacy insight redirects.
+Static source for Gabriel Macovei's personal professional website.
+
+## Site role
+
+gmacovei.com explains Gabriel's professional focus, selected work, working approach, writing, and contact routes. Commercial brand, website, advertising, pricing, and project-inquiry information belongs on RielArt. Approved RielArt clients use the separate Client Portal.
+
+## Technology
+
+- Static HTML, CSS, and JavaScript
+- Responsive light and dark themes
+- No build step or runtime framework
+- GitHub Pages-compatible routing and `CNAME`
+
+## Local preview
+
+Run a static HTTP server from the repository root. For example:
+
+```text
+python -m http.server 8000
+```
+
+Then open `http://127.0.0.1:8000/`.
+
+## Quality checks
+
+Run the standard-library audit:
+
+```text
+python tools/site_audit.py
+```
+
+The audit checks public routes, metadata, links, image references, structured data, indexability, legacy fallback behavior, duplicate IDs, homepage anchors, and outdated positioning.
 
 ## Deployment
 
-Upload the files at the root of this folder to the existing GitHub Pages repository. Keep `CNAME` unchanged. GitHub Pages does not process the Netlify/Cloudflare-style `_redirects` file, so configure permanent legacy-URL redirects at the hosting or CDN layer if they are needed.
+The current repository is prepared for GitHub Pages. Keep `CNAME` unchanged. GitHub Pages does not process the `_redirects` file, so real HTTP 301 redirects must be configured at the active CDN or hosting layer. Static legacy fallback pages remain for GitHub Pages.
 
-## Included
-
-- Responsive liquid-glass navigation, sections, cards, footer, and theme system
-- Portrait-led homepage hero
-- Existing four-value proof row
-- Personal About, RielArt, experience, industries, outcomes, insights, FAQ, and contact content
-- Light and dark modes
-- Mobile navigation and reduced-motion support
-- Existing SEO metadata, static redirect fallbacks, sitemap, robots, privacy policy, and terms
-
-
-## Final hybrid update
-- Restored the original hero, What I Do, About, Business Work, and Contact section structures.
-- Applied the current RielArt floating liquid-glass navigation, theme behavior, mobile menu, and motion.
-- Kept the homepage hero headline to three deliberate lines on desktop.
-
-
-## Final navigation cleanup
-- Restored the original navigation items: Home, About, Work, Insights, and Contact.
-- Removed the RielArt call-to-action from desktop and mobile navigation.
-- Replaced conflicting active-link scripts with one deterministic scroll-aware implementation.
-- Removed the four-item proof strip below the homepage hero.
+See `GMACOVEI-DEPLOYMENT-MANIFEST.txt` for the public/excluded file list and `GMACOVEI-QA-REPORT.md` for the latest validation record.
