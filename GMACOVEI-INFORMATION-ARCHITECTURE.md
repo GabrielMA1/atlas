@@ -6,8 +6,8 @@ Last updated: July 28, 2026
 
 The desktop and mobile navigation use the same structure:
 
-1. About — `/#about`
-2. Work — `/#work`
+1. Work — `/#work`
+2. About — `/#about`
 3. Writing — `/#writing`
 4. Contact — `/#contact`
 5. RielArt ↗ — `https://rielart.com`
@@ -19,10 +19,11 @@ The logo and Gabriel Macovei wordmark link to `/`, so "Home" is not repeated in 
 ### 1. Hero
 
 - Section ID: `home`
-- H1: I turn complex digital work into clear, usable systems.
+- H1: I help businesses look better online, reach more people, and work smarter.
 - Primary action: Explore My Work → `#work`
 - Secondary action: Visit RielArt → `https://rielart.com`
 - Purpose: Establish identity, positioning, location, and the commercial route without making the personal site a service page.
+- Portrait: The accessible portrait remains in the hero without a visible caption beneath it.
 
 ### 2. Professional focus
 

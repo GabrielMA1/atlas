@@ -52,7 +52,7 @@ The secure workspace for approved RielArt clients. Live browser inspection on Ju
 ## Approved personal positioning
 
 - Eyebrow: **Digital Presence · Advertising Management · Practical Systems**
-- Headline: **I turn complex digital work into clear, usable systems.**
+- Headline: **I help businesses look better online, reach more people, and work smarter.**
 - Supporting copy: **I'm Gabriel Macovei, a Toronto-based digital professional working across digital presence, advertising management, business technology, automation, and practical systems.**
 - Job title for structured data: **Digital Professional**
 

@@ -154,3 +154,33 @@ Business IT, cloud tools, integrations, automation, and practical AI remain supp
 - `tools/site_audit.py` — approved-positioning, social metadata, schema vocabulary, and commercial-routing assertions
 - `GMACOVEI-QA-REPORT.md` — content-alignment regression results
 - `GMACOVEI-IMPLEMENTATION-LOG.md` — complete update record and file list
+
+## Visual and copy refinement
+
+On July 29, 2026, a narrow production refinement:
+
+- Removed the visible caption beneath the hero portrait while preserving the image, alt text, dimensions, crop, loading behavior, and responsive treatment.
+- Replaced the hero headline with: `I help businesses look better online, reach more people, and work smarter.`
+- Reordered primary navigation to Work, About, Writing, Contact across desktop and mobile markup on all routes.
+- Removed the visible capability-area disclaimer beneath Professional Focus.
+- Centered the decorative footer wordmark through a footer-relative inset layer with grid centering, predictable stacking, low contrast, `aria-hidden`, and disabled pointer interaction.
+- Grouped each Selected Work action into an equivalent structural region and equalized the desktop preview minimum so card actions and previews align without filler content, JavaScript measurement, or clipping.
+- Preserved the approved focus areas, section order, supporting copy, metadata, structured data, external routes, theme behavior, and static architecture.
+
+### Files modified for the visual and copy refinement
+
+- `index.html` — headline, portrait-caption removal, navigation order, disclaimer removal, and Selected Work action regions
+- `assets/css/site.css` — hero wrapping, portrait spacing cleanup, work-card alignment, and centered footer wordmark
+- `404.html` — shared desktop and mobile navigation order only
+- `privacy-policy/index.html` — shared desktop and mobile navigation order only
+- `terms-conditions/index.html` — shared desktop and mobile navigation order only
+- `blog/index.html` — shared desktop and mobile navigation order only
+- `blog/ai-chatbots-cut-support-costs/index.html` — shared desktop and mobile navigation order only
+- `blog/website-costing-you-leads/index.html` — shared desktop and mobile navigation order only
+- `blog/direct-mail-outperforms-digital-ads-toronto/index.html` — shared desktop and mobile navigation order only
+- `GMACOVEI-STRATEGY.md` — approved hero headline
+- `GMACOVEI-COPY-MAP.md` — navigation, hero, focus, and Selected Work refinement record
+- `GMACOVEI-INFORMATION-ARCHITECTURE.md` — primary navigation order and hero content
+- `tools/site_audit.py` — headline, portrait-caption, disclaimer, work-action, wordmark, and navigation-order assertions
+- `GMACOVEI-QA-REPORT.md` — refinement regression results
+- `GMACOVEI-IMPLEMENTATION-LOG.md` — exact change record and file list

@@ -52,6 +52,7 @@ OUTDATED_PUBLIC_COPY = (
     "liquid-glass",
     "founder-led",
     "2027",
+    "I turn complex digital work into clear, usable systems.",
 )
 
 APPROVED_FOCUS_AREAS = (
@@ -88,6 +89,21 @@ OUTDATED_FOCUS_HEADINGS = (
     "Digital strategy",
     "IT systems",
     "Automation and practical AI",
+)
+
+APPROVED_HERO_HEADLINE = (
+    "I help businesses look better online, reach more people, and work smarter."
+)
+
+APPROVED_NAV_ORDER = (
+    "/#work",
+    "/#about",
+    "/#writing",
+    "/#contact",
+)
+
+REMOVED_CAPABILITY_DISCLAIMER = (
+    "These are professional capability areas, not public service packages."
 )
 
 REQUIRED_EXCLUSIONS = (
@@ -543,6 +559,61 @@ def check_approved_positioning(
         errors.append("Homepage: RielArt commercial inquiry route changed or is missing")
 
 
+def check_refinement_requirements(
+    pages: dict[str, tuple[Path, PageParser, str]],
+    root: Path,
+    errors: list[str],
+) -> None:
+    homepage = pages.get("/")
+    if not homepage:
+        return
+
+    _, _, homepage_source = homepage
+    homepage_text = " ".join(
+        html.unescape(re.sub(r"<[^>]+>", " ", homepage_source)).split()
+    )
+
+    if APPROVED_HERO_HEADLINE not in homepage_text:
+        errors.append("Homepage: approved refined hero headline is missing")
+    if REMOVED_CAPABILITY_DISCLAIMER in homepage_text:
+        errors.append("Homepage: removed capability disclaimer is still visible")
+
+    portrait_match = re.search(
+        r'<figure\s+class="[^"]*\bportrait\b[^"]*"[^>]*>(.*?)</figure>',
+        homepage_source,
+        flags=re.I | re.S,
+    )
+    if not portrait_match:
+        errors.append("Homepage: portrait figure is missing")
+    elif re.search(r"<figcaption\b", portrait_match.group(1), flags=re.I):
+        errors.append("Homepage: portrait caption wrapper must be removed")
+
+    if len(re.findall(r'class="work-action"', homepage_source)) != 2:
+        errors.append("Homepage: expected two structural Selected Work action regions")
+
+    nav_patterns = {
+        "desktop": r'<nav\s+class="desktop-nav"[^>]*>(.*?)</nav>',
+        "mobile": r'<nav\s+aria-label="Mobile navigation"[^>]*>(.*?)</nav>',
+    }
+    for route, (path, _, source) in pages.items():
+        label = path.relative_to(root).as_posix()
+        for nav_name, pattern in nav_patterns.items():
+            match = re.search(pattern, source, flags=re.I | re.S)
+            if not match:
+                errors.append(f"{label}: missing {nav_name} navigation")
+                continue
+            hrefs = re.findall(r'href="([^"]+)"', match.group(1), flags=re.I)
+            internal_order = tuple(href for href in hrefs if href.startswith("/#"))
+            if internal_order != APPROVED_NAV_ORDER:
+                errors.append(
+                    f"{label}: {nav_name} navigation order should be "
+                    "Work, About, Writing, Contact"
+                )
+
+        if 'class="footer-wordmark" aria-hidden="true"' not in source:
+            errors.append(f"{label}: decorative footer wordmark must remain aria-hidden")
+
+
 def check_sitemap(
     root: Path,
     pages: dict[str, tuple[Path, PageParser, str]],
@@ -637,6 +708,7 @@ def main() -> int:
     check_images(root, pages, errors)
     check_json_ld(pages, errors)
     check_approved_positioning(pages, errors)
+    check_refinement_requirements(pages, root, errors)
     check_sitemap(root, pages, errors)
     check_outdated_copy(pages, root, errors)
     check_deployment_exclusions(root, errors)

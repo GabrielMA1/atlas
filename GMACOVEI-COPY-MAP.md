@@ -5,7 +5,7 @@ Last updated: July 28, 2026
 ## Navigation
 
 - Current headline/label: Home, Work, About, Insights, Contact
-- New headline/label: About, Work, Writing, Contact, RielArt ↗
+- New headline/label: Work, About, Writing, Contact, RielArt ↗
 - Current purpose: Internal navigation only
 - New purpose: Personal information architecture plus a clearly labelled commercial destination
 - Retained: About, Work, Contact concepts
@@ -16,13 +16,13 @@ Last updated: July 28, 2026
 ## Hero
 
 - Current headline: I help businesses build, automate & grow with clarity and AI.
-- New headline: I turn complex digital work into clear, usable systems.
+- New headline: I help businesses look better online, reach more people, and work smarter.
 - Current purpose: Sell broad digital and AI work
 - New purpose: Establish Gabriel's personal professional positioning
 - Approved eyebrow: Digital Presence · Advertising Management · Practical Systems
 - Approved support: I'm Gabriel Macovei, a Toronto-based digital professional working across digital presence, advertising management, business technology, automation, and practical systems.
-- Retained: Portrait, Toronto context, web, business technology, automation, integrations, and practical AI subject areas
-- Removed: "AI Expert"; package-style contact row; hard-coded headline line spans
+- Retained: Portrait, Toronto context in supporting copy and footer, web, business technology, automation, integrations, and practical AI subject areas
+- Removed: "AI Expert"; package-style contact row; hard-coded headline line spans; visible caption beneath the portrait
 - Primary CTA: Explore My Work
 - Primary destination: `#work`
 - Secondary CTA: Visit RielArt
@@ -38,6 +38,7 @@ Last updated: July 28, 2026
 - Retained as supporting detail: Website strategy, user experience, analytics, business IT, cloud tools, integrations, automation, and practical AI
 - Advertising scope: Focused Google Search or Meta advertising, including campaign structure, targeting, messaging, conversion tracking, performance review, and practical optimization
 - Removed: Commercial package framing, checklist deliverables, "Explore service" links
+- Removed in refinement: The visible capability-area disclaimer beneath the cards
 - CTA: None
 - Destination: Not applicable
 
@@ -53,6 +54,7 @@ Last updated: July 28, 2026
 - Destination 1: `https://rielart.com`
 - CTA 2: Open Client Portal
 - Destination 2: `https://portal.rielart.com`
+- Alignment: Equivalent content regions, actions, and preview panels align when the cards display side by side
 
 ## About and working approach
 
