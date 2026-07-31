@@ -68,7 +68,7 @@ APPROVED_TITLE = (
 )
 
 APPROVED_DESCRIPTION = (
-    "Gabriel Macovei is a Toronto-based digital professional focused on digital "
+    "Gabriel Macovei is a digital professional focused on digital "
     "presence, advertising management, business technology, automation, and practical systems."
 )
 
