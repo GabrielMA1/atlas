@@ -1095,7 +1095,7 @@ h3 {
   display: grid;
   align-content: start;
   min-width: 0;
-  min-height: 238px;
+  min-height: 96px;
   margin-top: auto;
 }
 
@@ -1134,20 +1134,6 @@ h3 {
 .contact-method .text-link {
   max-width: 100%;
   overflow-wrap: anywhere;
-}
-
-.contact-address {
-  min-width: 0;
-  margin: 18px 0 0;
-  color: var(--text-soft);
-  font-style: normal;
-  line-height: 1.55;
-  overflow-wrap: anywhere;
-}
-
-.contact-address span,
-.footer-address span {
-  display: block;
 }
 
 .contact-section {
@@ -1219,43 +1205,6 @@ h3 {
   font-size: 0.76rem;
 }
 
-.footer-location {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0 8px;
-}
-
-.footer-contact {
-  display: grid;
-  justify-items: end;
-  gap: 12px;
-}
-
-.footer-address {
-  margin: 0;
-  color: inherit;
-  font-style: normal;
-  line-height: 1.55;
-  text-align: right;
-  overflow-wrap: anywhere;
-}
-
-.footer-phone {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: inherit;
-  text-decoration-line: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 4px;
-}
-
-.footer-phone:hover {
-  color: #becddd;
-  text-decoration-color: currentColor;
-}
 
 .footer-wordmark {
   position: absolute;
@@ -1676,14 +1625,6 @@ h3 {
   .footer-bottom {
     flex-direction: column;
     gap: 8px;
-  }
-
-  .footer-contact {
-    justify-items: start;
-  }
-
-  .footer-address {
-    text-align: left;
   }
 
   .hero-copy h1 {
