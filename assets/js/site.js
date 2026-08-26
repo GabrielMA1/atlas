@@ -4,26 +4,48 @@
   const themeToggle = document.querySelector("[data-theme-toggle]");
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
   root.classList.add("js");
 
-  const syncTheme = () => {
+  const savedTheme = () => {
+    try {
+      const value = localStorage.getItem("theme");
+      return value === "dark" || value === "light" ? value : null;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const syncThemeControl = () => {
     const dark = root.dataset.theme === "dark";
     themeToggle?.setAttribute("aria-pressed", String(dark));
     themeToggle?.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
   };
 
-  syncTheme();
+  syncThemeControl();
 
   themeToggle?.addEventListener("click", () => {
     root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
     try {
       localStorage.setItem("theme", root.dataset.theme);
     } catch (_) {
-      // Theme persistence is optional when browser storage is unavailable.
+      // Persistence is optional when browser storage is unavailable.
     }
-    syncTheme();
+    syncThemeControl();
   });
+
+  const followSystemTheme = (event) => {
+    if (savedTheme()) return;
+    root.dataset.theme = event.matches ? "dark" : "light";
+    syncThemeControl();
+  };
+
+  if (typeof systemTheme.addEventListener === "function") {
+    systemTheme.addEventListener("change", followSystemTheme);
+  } else if (typeof systemTheme.addListener === "function") {
+    systemTheme.addListener(followSystemTheme);
+  }
 
   let menuReturnFocus = null;
 
@@ -31,13 +53,13 @@
     ? [...mobileMenu.querySelectorAll("a[href], button:not([disabled])")]
     : [];
 
-  const closeMenu = () => {
+  const closeMenu = (restoreFocus = true) => {
     if (!menuToggle || !mobileMenu || mobileMenu.hidden) return;
     mobileMenu.hidden = true;
     document.body.classList.remove("menu-open");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation");
-    menuReturnFocus?.focus();
+    if (restoreFocus) menuReturnFocus?.focus();
   };
 
   const openMenu = () => {
@@ -56,7 +78,7 @@
   });
 
   mobileMenu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener("click", () => closeMenu(false));
   });
 
   document.addEventListener("keydown", (event) => {
@@ -86,12 +108,8 @@
   const internalNavLinks = [
     ...document.querySelectorAll('.desktop-nav a[href^="/#"], .mobile-menu a[href^="/#"]')
   ];
-
   const sectionIds = [...new Set(internalNavLinks.map((link) => new URL(link.href).hash.slice(1)))];
-  const sections = sectionIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean)
-    .sort((a, b) => a.offsetTop - b.offsetTop);
+  const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
 
   const setActiveSection = (id) => {
     internalNavLinks.forEach((link) => {
@@ -104,12 +122,11 @@
 
   const updatePageState = () => {
     scrollFrame = null;
-    header?.classList.toggle("is-scrolled", window.scrollY > 12);
+    header?.classList.toggle("is-scrolled", window.scrollY > 10);
 
-    if (location.pathname.replace(/index\.html$/, "") !== "/") return;
-    if (!sections.length) return;
+    if (location.pathname.replace(/index\.html$/, "") !== "/" || !sections.length) return;
 
-    const marker = window.scrollY + (header?.offsetHeight || 0) + Math.min(180, window.innerHeight * 0.25);
+    const marker = window.scrollY + (header?.offsetHeight || 0) + Math.min(180, window.innerHeight * 0.24);
     let active = "";
 
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 6) {
@@ -129,29 +146,13 @@
   };
 
   window.addEventListener("scroll", requestPageState, { passive: true });
-  window.addEventListener("resize", requestPageState, { passive: true });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1100) closeMenu(false);
+    requestPageState();
+  }, { passive: true });
   window.addEventListener("hashchange", requestPageState);
+  window.addEventListener("load", requestPageState, { once: true });
   updatePageState();
-
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const reveals = [...document.querySelectorAll(".reveal")];
-
-  if (reducedMotion || !("IntersectionObserver" in window)) {
-    reveals.forEach((element) => element.classList.add("is-visible"));
-  } else {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: "0px 0px -7% 0px"
-    });
-
-    reveals.forEach((element) => observer.observe(element));
-  }
 
   document.querySelectorAll("[data-year]").forEach((element) => {
     element.textContent = String(new Date().getFullYear());

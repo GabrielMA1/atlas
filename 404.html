@@ -8,12 +8,15 @@
   <meta name="description" content="The requested page could not be found on gmacovei.com.">
   <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260901final1">
   <script>
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+      const savedTheme = localStorage.getItem("theme");
+      document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light"
+        ? savedTheme
+        : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     } catch (_) {
-      document.documentElement.dataset.theme = "light";
+      document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     }
   </script>
 </head>
@@ -58,7 +61,7 @@
   <main class="not-found" id="main-content" tabindex="-1">
     <div class="container">
       <div class="not-found-card">
-        <p class="not-found-code">ERROR 404</p>
+        <p class="not-found-code">Page not found</p>
         <h1>That page is not here.</h1>
         <p>The page may have moved, or the address may be incorrect. Return to Gabriel’s personal website to continue.</p>
         <a class="button button-primary" href="/">Return home <span aria-hidden="true">→</span></a>
@@ -92,6 +95,6 @@
       <div class="footer-wordmark" aria-hidden="true">GMACOVEI</div>
     </div>
   </footer>
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/site.js?v=20260901final1" defer></script>
 </body>
 </html>

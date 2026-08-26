@@ -184,3 +184,80 @@ On July 29, 2026, a narrow production refinement:
 - `tools/site_audit.py` — headline, portrait-caption, disclaimer, work-action, wordmark, and navigation-order assertions
 - `GMACOVEI-QA-REPORT.md` — refinement regression results
 - `GMACOVEI-IMPLEMENTATION-LOG.md` — exact change record and file list
+
+## Complete personal-brand redesign
+
+On August 26, 2026, the local test clone received a complete art-direction, UX, frontend, accessibility, and responsive redesign while preserving the approved content, route, SEO, legal, and static-hosting contracts.
+
+### Direction and composition
+
+- Reframed the site around a portrait-led warm-stone, paper, ink, navy, and GMACOVEI-blue system.
+- Derived a restrained open, stepped aperture from the GMACOVEI G and used it in the portrait crop, selected-work imagery, and RielArt relationship panel.
+- Rebuilt the hero with portrait left and exact approved positioning right on desktop, then copy before portrait on mobile.
+- Replaced the numbered Focus cards with one continuous navy field and staggered, rule-led content.
+- Replaced matching Selected Work cards with alternating full-width chapters for RielArt and the Client Portal.
+- Rebuilt About, principles, skills, Writing, Contact, legal, 404, and fallback treatments around open layout, rules, and controlled spacing.
+- Kept RielArt visually important without turning the personal site into an agency landing page.
+
+### Removed patterns
+
+- Numbered focus, principle, and contact systems
+- Fake portal status, progress, phase, security, and pseudo-dashboard UI
+- Universal reveal animations and IntersectionObserver choreography
+- Repeated rounded cards, skill pills, decorative halos, backdrop blur, hover lift, and oversized footer wordmark
+- Technical telemetry, control-panel, command-line, and architecture-diagram language
+- Generic AI glow, glass, gradient, neon, or futuristic motifs
+
+### Frontend and accessibility
+
+- Replaced the shared stylesheet with one 27.6 KB responsive design system.
+- Replaced the shared script with a 5.2 KB theme/navigation implementation without reveal logic.
+- Preserved theme persistence and added live system-theme response when no explicit preference is stored.
+- Added safe mobile-menu cleanup when resizing to desktop.
+- Preserved focus entry, focus trapping, Escape close, focus restoration, body lock, and active-section navigation.
+- Kept primary navigation available below 1100 pixels when JavaScript is unavailable.
+- Strengthened muted light-mode text and dark-mode skip-link contrast after computed-style testing.
+- Increased the 360-pixel-and-below header brand cap so the complete Gabriel Macovei name remains visible at 320 pixels.
+- Kept reduced-motion rules for scrolling, transitions, and animations.
+
+### Metadata, routes, and imagery
+
+- Preserved title, description, canonical, indexability, schema vocabulary, legal rules, and all approved routes.
+- Added the Apple touch icon to the four legacy fallback shells.
+- Replaced visible `ERROR 404` language with a human-readable `Page not found` label.
+- Applied one `?v=20260901final1` cache version to CSS and JavaScript across all eight HTML shells after the final shared-CSS refinement.
+- Regenerated the Open Graph image with the built-in image-generation tool using the exact current positioning, portrait-led composition, and open-frame brand cue.
+- Converted the generated card to an optimized 1200 x 630 JPEG, reducing it from 108,874 to 74,350 bytes.
+- Updated the homepage sitemap `lastmod` to August 26, 2026.
+
+### Validation completed during the redesign pass
+
+- Static audit: PASS, 8 pages, 0 findings
+- JavaScript syntax: PASS
+- Git whitespace check: PASS
+- Independent link, fragment, ARIA, image, and cache-version audit: PASS
+- Responsive overflow and required light/dark visual review: PASS
+- Theme persistence, desktop anchors, active navigation, mobile focus loop, Escape, link close, and resize cleanup: PASS
+- Homepage and utility computed contrast checks: PASS
+- External RielArt destinations and writing URLs: PASS
+- Tracked-file privacy hygiene scan: PASS
+
+No deployment, push, DNS, hosting, form submission, login, third-party account, or external service change was performed.
+
+### Files modified for the redesign
+
+- `index.html`
+- `assets/css/site.css`
+- `assets/js/site.js`
+- `images/gabriel-macovei-og.jpg`
+- `404.html`
+- `privacy-policy/index.html`
+- `terms-conditions/index.html`
+- `blog/index.html`
+- `blog/ai-chatbots-cut-support-costs/index.html`
+- `blog/website-costing-you-leads/index.html`
+- `blog/direct-mail-outperforms-digital-ads-toronto/index.html`
+- `sitemap.xml`
+- `REDESIGN-NOTES.md`
+- `GMACOVEI-QA-REPORT.md`
+- `GMACOVEI-IMPLEMENTATION-LOG.md`

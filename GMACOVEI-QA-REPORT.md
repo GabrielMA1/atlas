@@ -1,226 +1,202 @@
 # GMACOVEI QA Report
 
-Test date: July 29, 2026
+Test date: August 26, 2026
 
 ## Executive result
 
-The rebuilt and content-aligned static site passes the repository audit, JavaScript syntax check, route checks, browser console check, responsive viewport matrix, theme and mobile-menu interaction tests, card-alignment checks, and external destination verification.
+The complete personal-brand redesign passes the repository audit, JavaScript syntax validation, HTML/link/ARIA checks, computed light/dark contrast review, responsive overflow matrix, theme persistence, mobile-menu keyboard behavior, anchor navigation, local route checks, external RielArt destination checks, payload review, and tracked-file privacy scan.
 
-Final disposition: **CONDITIONAL PASS — READY AFTER LISTED CHECKS**
+Final disposition: **READY FOR PRODUCTION REVIEW**
 
-The remaining checks require browser or platform capabilities unavailable in the current automated environment and are listed at the end of this report.
+This status means the local clone is ready for stakeholder and deployment review. No deployment, push, DNS change, hosting change, form submission, or third-party account change was performed.
 
-## Visual and copy refinement regression
+## Automated repository checks
 
-The July 29, 2026 refinement pass confirmed:
+`tools/site_audit.py` (executed with the workspace-bundled Python 3 runtime)
 
-- The portrait retains its approved alt text, 720 × 720 source dimensions, crop, and loading behavior; its visible caption and complete `figcaption` wrapper are removed.
-- The hero headline is `I help businesses look better online, reach more people, and work smarter.`
-- At 1280, 1440, and 1920 pixels, the headline resolves to the same three balanced lines without an isolated one-word line.
-- At tablet and mobile widths, the headline wraps naturally without document-level horizontal overflow.
-- Desktop and mobile primary navigation use Work, About, Writing, Contact on every HTML route.
-- Work and About anchor navigation still updates the URL fragment and active-navigation state correctly.
-- The visible capability disclaimer is removed without an empty wrapper.
-- The footer wordmark text centre remained within three pixels of the footer centre across the full viewport matrix, remained `aria-hidden`, and retained `pointer-events: none`.
-- At desktop widths, both Selected Work cards have equal outer heights; the two primary actions share the same vertical coordinate; and both preview panels share the same top coordinate and 430-pixel minimum height.
-- At stacked widths, the cards retain natural content height and report no content clipping.
-- No external destination, approved focus label, metadata value, structured-data value, portrait asset, or JavaScript behavior changed.
-
-## Content-alignment regression update
-
-The July 28, 2026 regression pass confirmed:
-
-- The hero eyebrow uses `Digital Presence · Advertising Management · Practical Systems`.
-- The then-approved headline was unchanged during that content-only pass; the July 29 refinement above supersedes it.
-- The hero support, focus cards, About copy, skills, metadata, Open Graph copy, X copy, Person schema, accessible list labels, and shared footer descriptions align with the approved focus model.
-- `Advertising Management` is used consistently; `Ads Management` is not present.
-- Business IT, cloud tools, integrations, automation, and practical AI remain supporting details beneath Practical Systems.
-- Advertising scope remains focused on Google Search or Meta advertising without guarantees, unlimited-platform claims, pricing, or package cards.
-- Commercial brand, website, and advertising inquiries still route to `https://rielart.com/contact/#project-inquiry`.
-- RielArt and Client Portal roles and destinations remain unchanged.
-- No CSS, JavaScript, portrait, navigation, or layout change was made for this update.
-
-## Automated repository audit
-
-Command: `python tools/site_audit.py`
-
-Result: PASS
-
-- 8 HTML pages parsed
-- Required routes present
-- One H1 per page
-- Titles and descriptions present
-- Canonicals correct
-- JSON-LD parsed with Person, WebSite, and Organization types
-- Internal links and homepage anchors valid
-- Referenced local assets present
-- Images have alt, width, and height attributes with matching aspect ratios
-- External `target="_blank"` links protected with `noopener noreferrer`
-- Mail links do not use `target="_blank"`
-- Indexable/noindex rules correct
-- Sitemap matches the indexable canonical set
-- Legacy fallback canonicals and visible continuation links correct
-- No duplicate IDs
-- No flagged outdated public positioning
-- Approved hero phrase and three focus headings present
-- Homepage metadata and social metadata match the approved positioning
-- Person `jobTitle` and exact approved `knowsAbout` vocabulary present
-- RielArt commercial inquiry route preserved
-- Refined hero headline present and prior public headline absent
-- Portrait `figcaption` and capability disclaimer absent
-- Desktop and mobile navigation order verified on all eight routes
-- Two structural Selected Work action regions present
-- Decorative footer wordmark remains `aria-hidden`
-- Deployment exclusions present
-- CSS braces balanced
-
-## JavaScript
+- PASS
+- 8 HTML pages audited
+- 0 findings
+- Required routes, titles, descriptions, canonicals, indexability, schema, sitemap parity, local assets, internal anchors, image dimensions, external-link security, approved positioning, commercial routing, legacy fallbacks, and deployment exclusions passed
 
 `node --check assets/js/site.js`
 
-Result: PASS
+- PASS
+- Exit code 0
 
-Browser console review:
+`git diff --check`
 
-- Homepage errors/warnings: 0
-- Secondary-route errors/warnings: 0
+- PASS
+- Exit code 0
+- PowerShell/Git reported informational LF-to-CRLF normalization warnings only
 
-## Routes tested
+Independent HTML audit:
 
-Each route was tested at 1024 × 768 and 320 × 568.
+- 8 of 8 pages have exactly one H1
+- 37 IDs checked; no duplicates
+- 183 local references resolved, including 97 fragment references
+- 8 `aria-controls` values point to existing IDs
+- 43 `_blank` links include `noopener noreferrer`
+- 19 images have alt text and numeric width/height attributes
+- All 8 pages use one CSS and one JavaScript reference with the same `?v=20260901final1` cache version
 
-| Route | H1 | Robots | Horizontal overflow |
-|---|---:|---|---|
-| `/` | 1 | `index,follow` | None |
-| `/privacy-policy/` | 1 | `noindex,follow` | None |
-| `/terms-conditions/` | 1 | `noindex,follow` | None |
-| `/404.html` | 1 | `noindex,follow` | None |
-| `/blog/` | 1 | `noindex,follow` | None |
-| `/blog/ai-chatbots-cut-support-costs/` | 1 | `noindex,follow` | None |
-| `/blog/website-costing-you-leads/` | 1 | `noindex,follow` | None |
-| `/blog/direct-mail-outperforms-digital-ads-toronto/` | 1 | `noindex,follow` | None |
+## Browser and responsive review
 
-## Responsive viewport matrix
+The homepage was rendered and measured in both light and dark mode at these viewport widths:
 
-The homepage was measured in the browser at:
+- 1600, 1440, 1366, 1280, 1180, 1101, 1100, 1099, and 1080 pixels
+- 1024, 861, 860, 859, 820, and 768 pixels
+- 621, 620, 619, 430, 390, 375, 360, and 320 pixels
 
-- 320 × 568
-- 360 × 800
-- 390 × 844
-- 430 × 932
-- 768 × 1024
-- 1024 × 768
-- 1280 × 720
-- 1440 × 900
-- 1920 × 1080
+Focused visual review was completed at:
 
-At every tested viewport:
+- 1440 x 900, light and dark
+- 1024 x 1024, light
+- 768 x 1024, light
+- 390 x 844, light and dark
+- 320 x 844, light
 
-- No horizontal overflow was detected.
-- The H1 remained inside the viewport.
-- The portrait loaded at its natural 720 × 720 dimensions.
-- Mobile navigation replaced desktop navigation at the intended breakpoint.
-- No visible interactive target measured below the WCAG 2.2 AA 24 × 24 CSS-pixel minimum.
+Section-level pixel review covered Work and Contact at 1101, 1100, and 1099 pixels; Focus, Work, About, Writing, and Contact around 861/860/859 pixels; Writing and Contact around 621/620/619 pixels; the complete section sequence at 320 pixels; and the footer at representative desktop, tablet, and phone boundaries in both themes.
 
-Visual inspection was completed for desktop and mobile hero layouts, professional-focus cards, selected-work treatments, the RielArt relationship panel, writing cards, contact cards, and footer.
+At every measured width:
 
-## Card alignment
+- document horizontal overflow was 0 pixels
+- the hero remained within the layout width
+- desktop navigation changed to the mobile control at the 1100-pixel breakpoint
+- the hero changed from two columns to one column at the 861/860-pixel boundary
+- no section, work treatment, writing row, contact route, or footer was clipped
+- the exact 1101/1100/1099, 861/860/859, and 621/620/619 transitions changed layout without mixed states
 
-At 1440 × 900:
+The complete mobile homepage was inspected section by section: Hero, Professional Focus, both Selected Work chapters, About and principles, skills, the RielArt relationship panel, Writing, Contact, and footer.
 
-- All three professional-focus cards had matching top, bottom, and 507-pixel height measurements.
-- Description regions remained comparable and list areas stayed aligned.
-- Both selected-work cards had matching top, bottom, and height measurements.
-- Selected Work actions shared the same top coordinate.
-- Selected Work previews shared the same top coordinate and 430-pixel height.
-- All three writing cards had matching heights and action positions.
-- All three contact cards had matching heights and action positions.
+Secondary-route visual review covered Privacy Policy at 390 pixels, Terms & Conditions at 1440 pixels, the 404 page at 1440 pixels, and `/blog/website-costing-you-leads/` before its redirect.
 
-Across the mobile viewport matrix, focus cards stacked naturally, used content-driven heights, and reported no scroll-height clipping.
+## Theme behavior
 
-## Theme and navigation interactions
+- Light and dark compositions rendered correctly on desktop and phone.
+- Theme-button accessible name and `aria-pressed` updated correctly.
+- Dark mode persisted after a full reload without reading browser storage directly.
+- System color-scheme fallback and change handling remain in the inline initialization and shared script.
 
-Result: PASS
+## Navigation and keyboard interaction
 
-- Light theme rendered correctly.
-- Dark theme rendered correctly.
-- Theme toggle label and `aria-pressed` state updated.
-- Dark preference persisted after reload.
-- Mobile menu opened and moved focus to Work, the first visible link.
-- Shift+Tab from the first menu link wrapped to the final link.
-- Escape closed the menu.
-- Focus returned to the menu button.
-- Body scrolling was locked only while the menu was open.
-- Scroll-aware active navigation updated across Work, About, Writing, and Contact.
+- Desktop Work, About, Writing, and Contact links moved to their intended sections.
+- URL hashes updated to `#work`, `#about`, `#writing`, and `#contact`.
+- Exactly one matching desktop link received `aria-current="location"` after each move.
+- The mobile menu opened, set `aria-expanded="true"`, removed `hidden`, locked body scrolling, and focused Work.
+- Shift+Tab from Work wrapped to the final RielArt link.
+- Escape closed the menu, restored body scrolling, reset the accessible label/state, and returned focus to the menu button.
+- Selecting About from the mobile menu closed the menu, released the body lock, moved to `#about`, and updated the active state.
+- Resizing an open mobile menu to desktop closed it safely before the toggle became hidden.
+- No-JavaScript CSS keeps the primary navigation visible and horizontally scrollable below the responsive breakpoint.
 
-## Accessibility review
+## Accessibility
 
-Confirmed:
+Structural checks confirmed:
 
-- Skip link is present and points to a focusable `main`.
-- One H1 per page and logical H2/H3 hierarchy.
-- Landmark and navigation labels present.
-- Portrait alt text is concise and factual.
-- Decorative logos use empty alt text.
-- External link purpose and destination are visible.
-- Email remains a standard `mailto:` link.
-- Mobile-menu focus trapping, Escape handling, and focus restoration passed.
-- Focus-visible styling is defined.
-- Reading order matches DOM order.
-- Reduced-motion CSS removes transitions/animations and the script bypasses reveal observation when reduction is requested.
+- a skip link targeting focusable `main`
+- one H1 per page with logical section headings
+- labelled navigation and regions
+- concise portrait alt text and empty alt text for decorative logos
+- valid ARIA control targets
+- visible focus styling
+- readable DOM order
+- accessible theme state
+- mobile focus trapping, Escape handling, and focus restoration
+- reduced-motion CSS that disables smooth scrolling, transitions, and animations
 
-Contrast calculations for representative smallest-text colour pairs:
+A computed-style contrast scan checked 133 visible homepage text/link/button elements in each theme and the visible text on legal and fallback layouts. Final minimum tested ratios were:
 
-- Light muted text on soft surface: 4.74:1
-- Light accent link on soft surface: 5.20:1
-- Light body text on page background: 9.12:1
-- Dark muted text on dark surface: 7.04:1
-- Dark accent link on dark page: 7.80:1
-- Dark-theme primary button text: 7.80:1
-- Footer secondary text: 5.82:1
+- Homepage light: 4.91:1
+- Homepage dark: 6.40:1
+- Legal light: 4.57:1
+- Legal dark: 6.40:1
+
+Three issues found during the full review were corrected: small muted writing summaries in light mode, dark-mode skip-link text, and the 320-pixel header brand cap. The legal breadcrumb token was also strengthened to clear 4.5:1.
+
+## Routes, SEO, and legacy behavior
+
+Local HTTP checks returned 200 for:
+
+- `/`
+- `/privacy-policy/`
+- `/terms-conditions/`
+- `/404.html`
+- `/blog/website-costing-you-leads/`
+- shared CSS, shared JavaScript, and the WebP portrait
+
+Preserved:
+
+- homepage title, description, canonical, indexability, and structured data
+- `Digital Presence · Advertising Management · Practical Systems`
+- approved H1 and `Digital Professional` schema job title
+- one indexable sitemap entry for `https://gmacovei.com/`
+- `noindex,follow` on legal, 404, and legacy fallback pages
+- external canonicals, visible continuation links, and meta refreshes on legacy fallbacks
+- CNAME, robots, redirect documentation, and Jekyll exclusions
+
+The sitemap `lastmod` was updated to `2026-08-26` for the redesigned homepage.
+
+The tested legacy page displayed its local explanation and action, then redirected after two seconds to its matching RielArt article.
 
 ## External destinations
 
-Live browser verification confirmed:
+Read-only verification found:
 
-- RielArt homepage uses the current Brand & Website Launch and Focused Ads Management model.
-- `https://rielart.com/contact/#project-inquiry` exists and contains the `project-inquiry` target.
-- RielArt Client Portal is deployed and restricted to approved portal emails.
-- All three displayed RielArt article URLs resolve to the matching article titles.
-- Both specific legacy article destinations resolve.
-- The LinkedIn profile URL resolves.
-- The direct email link is exactly `mailto:hello@gmacovei.com`.
+- RielArt homepage: 200
+- RielArt project inquiry page: 200, with the `project-inquiry` fragment target present
+- RielArt Client Portal: 200
+- all three current RielArt writing destinations: 200 with matching article titles
 
-## Performance and maintainability
+LinkedIn returned its automated-request status 999. The same public profile slug is indexed, so it is not treated as broken, but the automated reachability check is recorded as inconclusive.
 
-- CSS reduced from 121,874 bytes to approximately 27.5 KB.
-- JavaScript reduced from 10,149 bytes to approximately 5.1 KB.
-- Header logo reduced from 90,066 bytes to 14,054 bytes.
-- RielArt logo reduced from 92,374 bytes to 26,506 bytes.
-- Portrait remains a 66,062-byte WebP and was not modified.
-- Open Graph image remains a 108,874-byte 1200 × 630 JPEG.
-- No external font, JavaScript framework, animation library, form library, or analytics request was added.
+No link was used to submit a form, send a message, start an email, place a call, log in, or change an external service.
 
-Lighthouse was not run because Lighthouse, Chrome CLI, Pa11y, and axe-core were not installed in the available workspace runtime. No Lighthouse score is claimed.
+## Performance and payload
 
-## Deployment behavior
+Current source payloads:
 
-- `CNAME` remains `gmacovei.com`.
-- `_config.yml` excludes internal documentation, audit tools, the unused portrait JPG, and the outdated RielArt preview.
-- `_redirects` documents the intended permanent redirects.
-- Standard GitHub Pages does not process `_redirects`; static fallback pages remain in place.
-- A real 301 must be confirmed at the active CDN or hosting layer after deployment.
+- HTML: 59,422 bytes across 8 pages
+- CSS: 27,573 bytes
+- JavaScript: 5,231 bytes
+- complete image library: 464,548 bytes across 8 images
+- deployable image set after Jekyll exclusions: 232,325 bytes across 6 images
+- generated Open Graph JPEG: 74,350 bytes at 1200 x 630
 
-## Remaining manual checks
+Compared with the immediate pre-redesign baseline:
 
-Before publishing:
+- CSS decreased from 30,767 to 27,573 bytes
+- JavaScript decreased from 5,257 to 5,231 bytes
+- deployable images decreased from 266,849 to 232,325 bytes while the social card was refreshed
 
-1. Verify the homepage and secondary routes at actual browser zoom levels of 200% and 400%. The browser-control environment could not change browser zoom.
-2. Enable the operating system/browser reduced-motion preference and confirm the no-motion experience. The CSS and JavaScript paths were inspected, but the browser-control environment could not emulate the media preference.
-3. Run one physical keyboard pass beginning with the first Tab press to confirm the skip link is visibly revealed, moves focus to `main`, and the desktop navigation proceeds through Work, About, Writing, and Contact. The markup order, target, and focus styles are correct, and the mobile keyboard loop passed, but first-focus and desktop-Tab emulation were unreliable in the browser-control environment.
-4. Confirm the live deployment serves the expected files and excludes internal material.
-5. Confirm server/CDN response headers for the four legacy routes if real HTTP 301 redirects are required.
+The homepage has no external font, framework, analytics, animation library, or third-party runtime dependency. The hero portrait is an existing 66,062-byte WebP with explicit dimensions and high fetch priority. Shared JavaScript remains deferred.
+
+Local HTTP transfers returned 200 and completed in approximately 2–19 milliseconds on the loopback server; those timings confirm local delivery only and are not used as public hosting metrics.
+
+The Chrome DevTools performance MCP was unavailable, so no Lighthouse score, Core Web Vitals trace, or lab-performance claim is made.
+
+## Privacy hygiene
+
+A scan across 35 tracked files found:
+
+- 0 sensitive filenames
+- 0 local absolute Windows paths
+- 0 private-key markers
+- 0 known secret formats
+- 0 credential assignments
+- 0 credential-bearing URLs
+
+The approved public email, phone, LinkedIn, RielArt, and portal destinations remain intentionally present. No private location, token, password, account identifier, unpublished client data, or machine-specific path was added to the site.
+
+## Limitations and production-review items
+
+- Lighthouse/Core Web Vitals tracing was unavailable because the Chrome DevTools MCP is not configured.
+- Browser zoom at 200%/400% and an operating-system reduced-motion preference could not be emulated; their markup/CSS paths were inspected, but a physical manual pass is still appropriate.
+- First-Tab skip-link traversal was not reliably emulated by the available in-app browser, although the link, target, focusability, focus style, and mobile keyboard loop were verified.
+- Automated LinkedIn reachability is inconclusive because LinkedIn blocks the test client.
+- Live CDN caching, compression, security headers, redirects, analytics absence, and deployment exclusions must be confirmed after an authorized deployment.
+- Standard GitHub Pages does not process `_redirects`; static fallback pages remain the guaranteed behavior unless the active hosting layer implements redirects.
 
 ## Final disposition
 
-**CONDITIONAL PASS — READY AFTER LISTED CHECKS**
+**READY FOR PRODUCTION REVIEW**
