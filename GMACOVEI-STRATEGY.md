@@ -112,6 +112,8 @@ The design will preserve the portrait, GMACOVEI logo, navy and blue palette, the
 - Subtle reveal motion with reduced-motion support
 - No pointer-following glow
 
+September 24, 2026 update: the current visual system is described in `REDESIGN-NOTES.md`. It keeps this strategy's content and routing, but it uses no reveal-on-scroll motion or card groups. Instead it relies on self-hosted typography, the open-frame device from the GMACOVEI mark, and the three headline clauses mapped to the three focus areas. The live hero summary omits the name and the "Toronto-based" wording (the name appears as the line above it), matching a July 31, 2026 content change in the repository history.
+
 ## Truth and disclosure rules
 
 The site will make no client, employer, team, award, certification, revenue, result, project-count, or experience-duration claims. RielArt and its portal will be identified by type. No third portfolio item will be invented.

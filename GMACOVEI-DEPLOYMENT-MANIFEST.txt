@@ -1,5 +1,5 @@
 GMACOVEI DEPLOYMENT MANIFEST
-Generated: 2026-08-26
+Generated: 2026-09-24
 
 DEPLOYMENT MODEL
 - Static GitHub Pages-compatible site
@@ -26,6 +26,9 @@ PUBLIC ROUTE FILES
 PUBLIC ASSETS
 - assets/css/site.css
 - assets/js/site.js
+- assets/fonts/instrument-sans-latin-var.woff2
+- assets/fonts/newsreader-latin-400-italic.woff2
+- assets/fonts/OFL.txt
 - images/apple-touch-icon.png
 - images/favicon.png
 - images/gabriel-macovei.webp

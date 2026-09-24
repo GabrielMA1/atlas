@@ -1,6 +1,25 @@
 # GMACOVEI Copy Map
 
-Last updated: July 28, 2026
+Last updated: September 24, 2026
+
+## September 24, 2026 redesign additions
+
+These presentation-level additions reuse approved wording or facts already recorded in `GMACOVEI-STRATEGY.md`. No positioning, headline, focus area, or routing changed.
+
+- Hero headline presentation: set as four lines on every width: "I help businesses / look better online, / reach more people, / and work smarter." The wording is unchanged.
+- Hero summary (current live wording, unchanged from the repository): "I’m a digital professional working across digital presence, advertising management, business technology, automation, and practical systems." The name appears as its own line above the focus areas.
+- Focus clauses: "Look better online." (Digital Presence), "Reach more people." (Advertising Management), and "Work smarter." (Practical Systems), taken from the approved headline.
+- RielArt work note: "Built around two clearly defined services — Brand & Website Launch and Focused Ads Management — so scope, pricing, process, and project inquiries have one clear home."
+- Client Portal work note: "Kept separate from the public website: sign-in is passwordless and limited to approved client emails, so project activity stays with the people it belongs to."
+- Client Portal plate label: "Approved clients only".
+- About lead: the existing first paragraph, with "systems they can actually use." set in the serif accent.
+- RielArt relationship list, "Three sites, three jobs":
+  - gmacovei.com — You are here — "Personal website: who I am, how I work, selected work, writing, and ways to connect."
+  - rielart.com ↗ — "Brand and website work, focused advertising, pricing, process, and project inquiries."
+  - portal.rielart.com ↗ — "Workspace for approved RielArt clients: progress, milestones, updates, and requests."
+- Writing: each article title is now the link; the visible cue "Read on RielArt ↗" is kept, and screen readers hear "(read on RielArt, opens in a new tab)".
+- Footer: Connect adds "Client Portal ↗"; Explore adds "Contact".
+- Mobile menu control: the visible label is "Menu", and the open state is exposed through `aria-expanded`.
 
 ## Navigation
 
