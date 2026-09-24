@@ -5,6 +5,8 @@
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  // Keep in step with the navigation breakpoint in site.css.
+  const desktopLayout = window.matchMedia("(min-width: 961px)");
 
   root.classList.add("js");
 
@@ -58,7 +60,6 @@
     mobileMenu.hidden = true;
     document.body.classList.remove("menu-open");
     menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Open navigation");
     if (restoreFocus) menuReturnFocus?.focus();
   };
 
@@ -68,7 +69,6 @@
     mobileMenu.hidden = false;
     document.body.classList.add("menu-open");
     menuToggle.setAttribute("aria-expanded", "true");
-    menuToggle.setAttribute("aria-label", "Close navigation");
     menuLinks()[0]?.focus();
   };
 
@@ -147,7 +147,7 @@
 
   window.addEventListener("scroll", requestPageState, { passive: true });
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1100) closeMenu(false);
+    if (desktopLayout.matches) closeMenu(false);
     requestPageState();
   }, { passive: true });
   window.addEventListener("hashchange", requestPageState);

@@ -1,6 +1,6 @@
 # GMACOVEI Information Architecture
 
-Last updated: July 28, 2026
+Last updated: September 24, 2026
 
 ## Primary navigation
 
@@ -83,12 +83,16 @@ Business IT, cloud tools, integrations, automation, workflows, and practical AI 
   - Direct email → `hello@gmacovei.com`
 - Purpose: Send each visitor to the correct destination without adding a form.
 
+RielArt relationship also includes a short list headed "Three sites, three jobs" (H3): gmacovei.com (marked "You are here"), rielart.com ↗, and portal.rielart.com ↗, each with one line describing its role.
+
 ### 8. Footer
 
 - Concise personal description
-- About, Work, Writing, LinkedIn, RielArt, Privacy, Terms
-- Toronto, Canada · Working remotely
+- Explore: Work, About, Writing, Contact
+- Connect: LinkedIn ↗, RielArt ↗, Client Portal ↗, hello@gmacovei.com
+- Legal: Privacy, Terms
 - Decorative GMACOVEI wordmark, hidden from assistive technology
+- The same footer is used on every HTML route
 
 ## Secondary routes
 
@@ -123,7 +127,8 @@ These remain accessible static fallbacks for GitHub Pages, use `noindex,follow`,
 
 - Exactly one H1 per public HTML document.
 - Homepage H2 headings identify major sections.
-- H3 headings identify cards, work items, principles, articles, and contact routes.
+- H3 headings identify focus areas, work items, the "How I work" and "Skills in practice" groups, the three-sites list, articles, and contact routes.
+- H4 headings identify the four working principles inside "How I work".
 - Eyebrows are decorative labels, not heading substitutes.
 
 ## Link behavior

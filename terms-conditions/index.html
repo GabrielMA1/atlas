@@ -9,8 +9,12 @@
   <link rel="canonical" href="https://gmacovei.com/terms-conditions/">
   <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/site.css?v=20260901final1">
+  <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260924r1">
   <script>
+    document.documentElement.classList.add("js");
     try {
       const savedTheme = localStorage.getItem("theme");
       document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light"
@@ -23,12 +27,14 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header" data-site-header>
     <div class="container header-inner">
       <a class="brand" href="/" aria-label="Gabriel Macovei home">
         <img src="/images/logo.png" width="40" height="40" alt="">
         <span>Gabriel Macovei</span>
       </a>
+
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="/#work">Work</a>
         <a href="/#about">About</a>
@@ -36,19 +42,25 @@
         <a href="/#contact">Contact</a>
         <a class="nav-external" href="https://rielart.com" target="_blank" rel="noopener noreferrer">RielArt <span aria-hidden="true">↗</span></a>
       </nav>
+
       <div class="header-actions">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
-          <span class="theme-symbol theme-symbol-light" aria-hidden="true">☼</span>
-          <span class="theme-symbol theme-symbol-dark" aria-hidden="true">☾</span>
-          <span class="theme-label">Theme</span>
+          <svg class="theme-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <g class="icon-sun">
+              <circle cx="12" cy="12" r="4.25"/>
+              <path d="M12 2.5v2.25M12 19.25v2.25M2.5 12h2.25M19.25 12h2.25M5.28 5.28l1.6 1.6M17.12 17.12l1.6 1.6M5.28 18.72l1.6-1.6M17.12 6.88l1.6-1.6"/>
+            </g>
+            <path class="icon-moon" d="M19.5 14.6A7.75 7.75 0 0 1 9.4 4.5a7.75 7.75 0 1 0 10.1 10.1Z"/>
+          </svg>
         </button>
-        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-navigation">
+          <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
+          <span class="menu-word">Menu</span>
         </button>
       </div>
     </div>
   </header>
+
   <div class="mobile-menu" id="mobile-navigation" data-mobile-menu hidden>
     <nav aria-label="Mobile navigation">
       <a href="/#work">Work</a>
@@ -104,26 +116,36 @@
         <div class="footer-brand">
           <a class="brand" href="/" aria-label="Gabriel Macovei home">
             <img src="/images/logo.png" width="40" height="40" alt="">
-            <span>GMACOVEI</span>
+            <span>Gabriel Macovei</span>
           </a>
           <p>Personal website of Gabriel Macovei — digital presence, advertising management, and practical systems.</p>
         </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="/#about">About</a>
+        <nav class="footer-group" aria-labelledby="footer-explore-title">
+          <p class="footer-group-title" id="footer-explore-title">Explore</p>
           <a href="/#work">Work</a>
+          <a href="/#about">About</a>
           <a href="/#writing">Writing</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <nav class="footer-group" aria-labelledby="footer-connect-title">
+          <p class="footer-group-title" id="footer-connect-title">Connect</p>
           <a href="https://www.linkedin.com/in/gabrielmacovei" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
           <a href="https://rielart.com" target="_blank" rel="noopener noreferrer">RielArt <span aria-hidden="true">↗</span></a>
-          <a href="/privacy-policy/">Privacy</a>
-          <a href="/terms-conditions/">Terms</a>
+          <a href="https://portal.rielart.com" target="_blank" rel="noopener noreferrer">Client Portal <span aria-hidden="true">↗</span></a>
+          <a href="mailto:hello@gmacovei.com">hello@gmacovei.com</a>
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>© <span data-year></span> Gabriel Macovei.</span>
+        <span>© <span data-year>2026</span> Gabriel Macovei</span>
+        <nav class="footer-legal" aria-label="Legal">
+          <a href="/privacy-policy/">Privacy</a>
+          <a href="/terms-conditions/">Terms</a>
+        </nav>
+        <div class="footer-wordmark" aria-hidden="true">GMACOVEI</div>
       </div>
-      <div class="footer-wordmark" aria-hidden="true">GMACOVEI</div>
     </div>
   </footer>
-  <script src="/assets/js/site.js?v=20260901final1" defer></script>
+
+  <script src="/assets/js/site.js?v=20260924r1" defer></script>
 </body>
 </html>

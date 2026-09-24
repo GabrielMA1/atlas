@@ -261,3 +261,58 @@ No deployment, push, DNS, hosting, form submission, login, third-party account, 
 - `REDESIGN-NOTES.md`
 - `GMACOVEI-QA-REPORT.md`
 - `GMACOVEI-IMPLEMENTATION-LOG.md`
+
+## 2027-readiness redesign
+
+On September 24, 2026, the site received a full art-direction, typography, layout, and frontend refinement. The approved positioning, routing, metadata, schema, legal and legacy routes, and static architecture were kept. The design rationale is in `REDESIGN-NOTES.md`; validation is in `GMACOVEI-QA-REPORT.md`.
+
+### Direction
+
+- Concept: "the open frame and the three clauses". The approved headline sets as four lines, and its three clauses introduce the three focus areas.
+- Replaced the repeated stepped clip-path panels with a thin open line frame taken from the GMACOVEI mark and OG card. It is used only around the portrait, the RielArt plate, and the 404 / legacy cards.
+- New hero: copy and portrait on desktop; a portrait-and-name lockup on tablet and phone, with the full statement and both actions in the first phone viewport.
+- Selected Work became two chapters: an ink RielArt plate using the real R mark and an oversized wordmark, and a typographic Client Portal plate. Each chapter adds one short factual note on how it is shaped.
+- Added a "Three sites, three jobs" list to the RielArt relationship band.
+- Writing now uses a sticky heading column and whole-row article links. Contact became a navy closing band with route rows.
+- Unified header, mobile menu, and footer across all eight shells; the footer now includes Contact and the Client Portal.
+
+### Typography
+
+- Self-hosted Instrument Sans (variable width and weight) and Newsreader Italic, both SIL OFL, replacing the Windows-only Aptos stack. A metric-adjusted fallback face is included, and the sans file is preloaded.
+
+### Technical
+
+- Rewrote `assets/css/site.css` as one token-driven system with separately art-directed light and dark themes.
+- `assets/js/site.js`: the menu breakpoint now comes from `matchMedia("(min-width: 961px)")`, and the menu button keeps its visible "Menu" label instead of swapping `aria-label`.
+- Inline head script on every shell now adds the `js` class before first paint, removing a layout shift (CLS 0.114 → 0).
+- Theme toggle uses drawn SVG sun and moon icons; `theme-color` meta tags were added.
+- Cache version `?v=20260924r1` on all eight shells.
+- `tools/site_audit.py` gained shared-asset checks (cache-version parity, pre-paint `js` class, font files and licence, no external font services).
+
+### Files modified
+
+- `index.html`
+- `404.html`
+- `privacy-policy/index.html`
+- `terms-conditions/index.html`
+- `blog/index.html`
+- `blog/ai-chatbots-cut-support-costs/index.html`
+- `blog/website-costing-you-leads/index.html`
+- `blog/direct-mail-outperforms-digital-ads-toronto/index.html`
+- `assets/css/site.css`
+- `assets/js/site.js`
+- `assets/fonts/instrument-sans-latin-var.woff2` (new)
+- `assets/fonts/newsreader-latin-400-italic.woff2` (new)
+- `assets/fonts/OFL.txt` (new)
+- `tools/site_audit.py`
+- `sitemap.xml`
+- `README.md`
+- `REDESIGN-NOTES.md`
+- `GMACOVEI-STRATEGY.md`
+- `GMACOVEI-INFORMATION-ARCHITECTURE.md`
+- `GMACOVEI-COPY-MAP.md`
+- `GMACOVEI-DEPLOYMENT-MANIFEST.txt`
+- `GMACOVEI-QA-REPORT.md`
+- `GMACOVEI-IMPLEMENTATION-LOG.md`
+
+No deployment, DNS, hosting, or external-service change was performed.

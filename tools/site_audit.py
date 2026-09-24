@@ -614,6 +614,35 @@ def check_refinement_requirements(
             errors.append(f"{label}: decorative footer wordmark must remain aria-hidden")
 
 
+def check_shared_assets(
+    pages: dict[str, tuple[Path, PageParser, str]],
+    root: Path,
+    errors: list[str],
+) -> None:
+    """Keep every shell on one cache version, self-hosted fonts, and a pre-paint JS flag."""
+    versions: set[str] = set()
+    for _, (path, _, source) in pages.items():
+        label = path.relative_to(root).as_posix()
+        found = set(re.findall(r'/assets/(?:css/site\.css|js/site\.js)\?v=([\w-]+)', source))
+        if len(found) != 1:
+            errors.append(f"{label}: shared CSS and JavaScript must use one cache version, found {sorted(found)}")
+        versions.update(found)
+        if 'document.documentElement.classList.add("js")' not in source:
+            errors.append(f"{label}: inline head script must set the js class before first paint")
+        if re.search(r"fonts\.(?:googleapis|gstatic)\.com|use\.typekit", source):
+            errors.append(f"{label}: external font service referenced")
+    if len(versions) > 1:
+        errors.append(f"Shared asset cache versions differ across pages: {sorted(versions)}")
+
+    css_path = root / "assets/css/site.css"
+    css = css_path.read_text(encoding="utf-8") if css_path.is_file() else ""
+    for font in re.findall(r'url\("(/assets/fonts/[^"]+)"\)', css):
+        if not (root / font.lstrip("/")).is_file():
+            errors.append(f"assets/css/site.css: missing font file {font}")
+    if not (root / "assets/fonts/OFL.txt").is_file():
+        errors.append("assets/fonts/OFL.txt: font licence file is missing")
+
+
 def check_sitemap(
     root: Path,
     pages: dict[str, tuple[Path, PageParser, str]],
@@ -709,6 +738,7 @@ def main() -> int:
     check_json_ld(pages, errors)
     check_approved_positioning(pages, errors)
     check_refinement_requirements(pages, root, errors)
+    check_shared_assets(pages, root, errors)
     check_sitemap(root, pages, errors)
     check_outdated_copy(pages, root, errors)
     check_deployment_exclusions(root, errors)
@@ -719,6 +749,8 @@ def main() -> int:
     print(f"Audited {len(pages)} HTML pages.")
     print(f"CSS: {css_bytes:,} bytes")
     print(f"JavaScript: {js_bytes:,} bytes")
+    font_bytes = sum(path.stat().st_size for path in (root / "assets/fonts").glob("*.woff2"))
+    print(f"Fonts: {font_bytes:,} bytes")
 
     if errors:
         print(f"\nFAIL - {len(errors)} issue(s):")
