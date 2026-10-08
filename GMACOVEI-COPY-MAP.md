@@ -2,6 +2,13 @@
 
 Last updated: October 8, 2026
 
+## October 8, 2026 hero revision
+
+- Removed from the hero: the name line "Gabriel Macovei" (it is already in the header) and the focus phrase line.
+- The approved focus phrase "Digital Presence · Advertising Management · Practical Systems" now appears as the footer line beneath the name on every page. It replaces the footer sentence "Personal website of Gabriel Macovei — digital presence, advertising management, and practical systems.", which said the same thing.
+- Added: three hero notes beside the headline clauses, each linking to its focus area: "Digital Presence ↓", "Advertising Management ↓", "Practical Systems ↓".
+- Removed: the portrait from the site, along with its alt text.
+
 ## October 8, 2026 redesign changes
 
 No positioning, headline, focus area, description, principle, article, or contact destination was rewritten. Changes are limited to structure and presentation:

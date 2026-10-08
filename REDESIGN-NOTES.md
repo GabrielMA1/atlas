@@ -13,7 +13,7 @@ Gabriel's proposition is clarity: systems people can understand, work that is do
 1. **One colour field.** The cobalt of the G mark (`#0b3bcf`, sampled from the logo's median tone) is used flat and at full strength for the hero, Contact, and footer. Everything between is paper and ink. There are no gradients, and blue is not used as a tint everywhere.
 2. **One typeface built for clarity.** Atkinson Hyperlegible Next (SIL OFL, self-hosted, variable 200–800, 34 KB) was designed so that no two letters can be confused. It suits someone whose principles are "keep systems understandable" and "make information clearer", and it looks nothing like the Inter/Instrument/Geist family that most templates use. Hierarchy comes only from size and weight. There are no italics, no second family, and no tracked uppercase.
 3. **Outcome first, discipline second.** The three headline clauses lead the Focus section in large cobalt type ("Look better online."), and the discipline name ("Digital Presence") sits beneath as a label. A visitor reads the promise in the hero and then sees each part of it explained.
-4. **The desk line.** The portrait is cropped 4:5 so that the front edge of Gabriel's desk ends exactly where the cobalt field ends and the page begins. It is a composition specific to this photograph, with no frame or ornament.
+4. **The statement as a contents page.** The hero is type only. Each outcome clause runs on a leader line to the discipline it belongs to ("look better online, ——— Digital Presence ↓"), and each discipline links to its section. The hero shows the promise and how the page is organised in one composition. The portrait was removed at Gabriel's request: it already appears on LinkedIn, and the name is already in the header.
 5. **Square corners.** Buttons, photo and bands are square, like stationery. The only round shape is the theme toggle's hover area.
 
 ## Information architecture changes
@@ -28,7 +28,7 @@ Gabriel's proposition is clarity: systems people can understand, work that is do
 ## Composition by section
 
 - **Header:** paper, sticky, with a hairline that appears on scroll. In dark mode the G mark becomes a knockout. Below 961px a solid ink Menu button opens a full-screen cobalt menu set in large type. At 360px and below the button shows only its icon, and its accessible name stays "Menu".
-- **Hero:** a cobalt field. The name and focus phrase come first, then the four-line headline, the summary, one white button, and the RielArt route. The headline is sized in container-query units (`min(5.75rem, 11.6cqi, 9svh)`), so it is always exactly four lines at any width and never pushes the hero past a short viewport. The portrait sits on the field's bottom edge in two columns down to 721px. Below that it follows the statement and runs edge to edge on phones.
+- **Hero:** a cobalt field holding the four-line headline at poster scale. From 721px up, the three outcome lines run on 2px leaders to the discipline notes in a right-hand column, and hovering or focusing a note lights its leader. A ruled foot holds the summary, one white button, and the RielArt route. The headline size is calculated from the space left beside the notes (container-query units, capped at `7rem` and `12.5svh`), so each clause is always one line and the notes always align with their leaders. Below 721px the notes are hidden (the Focus section follows directly) and the headline fills the width.
 - **Focus:** the heading and intro sit in the margin column. The main column holds three outcome-led rows, each with its discipline and its details set as running text.
 - **Work:** a full-width heading. RielArt is set at wordmark scale beside its real R mark. Its description, services and link sit in the main column, and the Client Portal is nested beneath with one cobalt rule.
 - **About:** a reading-size lead paragraph. The principles band (pale cobalt tint) has each principle's name in cobalt followed by its sentence. Skills are set as one flowing line.
@@ -48,15 +48,23 @@ Paper-to-paper section changes are marked with a single content-width rule (`.se
 | Link | `#0b3bcf` | `#9fb6ff` |
 | Field / text on field / secondary on field | `#0b3bcf` / `#fff` / `#c8d4fa` | `#1238b8` / `#fff` / `#c3cff7` |
 
-The lowest computed contrast for any visible text is 5.61:1 in light and 5.95:1 in dark.
+The lowest computed contrast for settled text is 5.61:1 in light and 5.95:1 in dark. Focus clauses pass through a muted state on scroll that stays at 3.33:1 (light) and 3.5:1 (dark); they are large text, so that meets AA.
 
 ## Motion
 
-Only state changes are animated: nav underline, button colour, the arrow on the hero button, and a short menu entrance. Nothing animates on scroll. `prefers-reduced-motion: reduce` removes all of it and smooth scrolling.
+Motion explains the structure; it is not decoration.
+
+- **Hero entrance (once, about 1.9 s):** the clauses rise into place line by line, the leaders draw out from each clause, then the discipline notes arrive, and the foot fades up. Only transform and opacity are animated; the headline is readable after about 1 s.
+- **Hero hover:** pointing at or focusing a discipline turns its leader white.
+- **Focus clauses (scroll-linked, CSS only):** each outcome rises and brightens from a muted cobalt into full cobalt as it reaches reading position. The muted state stays above 3:1, so it is never illegible.
+- **Principles (scroll-linked):** each principle settles 32px into place. There is no dimming, because body-size text cannot drop below 4.5:1.
+- **State changes:** nav underlines, button colour, the hero button's arrow, external-link arrows leaning toward their direction, and a short menu entrance.
+
+Scroll-linked motion uses `animation-timeline: view()`. Browsers without it show the final state. The children of each focus item move rather than the item itself, so in-page links land exactly below the header. `prefers-reduced-motion: reduce` removes all of it, including smooth scrolling.
 
 ## Deliberately avoided
 
-Gradients, glass, glow, blobs, cards, pills, badges, sparkles, serif-italic accents, decorative numbering, monospace, tracked-uppercase labels, fake telemetry, fake screenshots or dashboards, scroll-triggered reveals, and a giant footer wordmark. Live RielArt and Portal screenshots were considered as real product imagery. They were not used because the live sites could not be reached during this pass, and screenshots would go stale.
+Gradients, glass, glow, blobs, cards, pills, badges, sparkles, serif-italic accents, decorative numbering, monospace, tracked-uppercase labels, fake telemetry, fake screenshots or dashboards, rotating-word or typewriter headlines, page-wide fade-ins, parallax, and a giant footer wordmark. Live RielArt and Portal screenshots were considered as real product imagery. They were not used because the live sites could not be reached during this pass, and screenshots would go stale.
 
 ## Known characteristics
 
@@ -68,16 +76,17 @@ Gradients, glass, glow, blobs, cards, pills, badges, sparkles, serif-italic acce
 - Static HTML, CSS, and vanilla JavaScript. No framework, build step, analytics, or runtime dependency.
 - `assets/css/site.css` (about 23 KB, down from 38 KB) is a single token-driven stylesheet. Colour tokens live on `:root` and `[data-theme="dark"]`.
 - `assets/fonts/` holds one WOFF2 file and `OFL.txt`.
-- New images: `gabriel-macovei-portrait.webp` (640 × 800 crop of the original portrait) and `logo-knockout.png` (white G for the cobalt footer).
-- All eight HTML shells share identical header, mobile menu, and footer markup, and the same `?v=20261008r1` cache version.
+- New image: `logo-knockout.png` (white G for the cobalt footer). No portrait is shown on the site. `gabriel-macovei.webp` remains only as the JSON-LD Person image, and the Open Graph card is unchanged.
+- All eight HTML shells share identical header, mobile menu, and footer markup, and the same `?v=20261008r2` cache version.
 
 ## Responsive breakpoints
 
 - Above 1180px: full desktop composition.
-- 961–1180px: wider portrait column.
-- 960px and below: Menu button, and single-column Focus, Work, About, Writing, and Contact. The hero keeps two columns.
-- 720px and below: single-column hero. The portrait follows the statement at 4:3.4 and still lands on the field's edge.
-- 640px and below: full-width hero button, edge-to-edge portrait, compact RielArt lockup.
+- 1024px and up: 15rem notes column in the hero.
+- 960px and below: Menu button, and single-column Focus, Work, About, Writing, and Contact.
+- 721–1023px: 13.75rem notes column in the hero.
+- 720px and below: no hero notes; the headline fills the width.
+- 640px and below: full-width hero button, compact RielArt lockup.
 - 360px and below: icon-only Menu button so the name stays on one line.
 
 This redesign is local only. Deployment, DNS, live hosting, external services, and third-party systems were not changed.

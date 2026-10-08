@@ -31,7 +31,6 @@ PUBLIC ASSETS
 - images/apple-touch-icon.png
 - images/favicon.png
 - images/gabriel-macovei.webp
-- images/gabriel-macovei-portrait.webp
 - images/gabriel-macovei-og.jpg
 - images/logo.png
 - images/logo-knockout.png

@@ -114,7 +114,7 @@ The design will preserve the portrait, GMACOVEI logo, navy and blue palette, the
 
 September 24, 2026 update: the current visual system is described in `REDESIGN-NOTES.md`. It keeps this strategy's content and routing, but it uses no reveal-on-scroll motion or card groups. Instead it relies on self-hosted typography, the open-frame device from the GMACOVEI mark, and the three headline clauses mapped to the three focus areas. The live hero summary omits the name and the "Toronto-based" wording (the name appears as the line above it), matching a July 31, 2026 content change in the repository history.
 
-October 8, 2026 update: the visual system was replaced (see `REDESIGN-NOTES.md`). Content, positioning, and routing are unchanged. The homepage now has seven sections instead of eight: the separate RielArt relationship band was removed because the selected-work entry, the About paragraph, and Contact already carried its information. The Client Portal is presented inside the RielArt entry.
+October 8, 2026 update: the visual system was replaced (see `REDESIGN-NOTES.md`). Content, positioning, and routing are unchanged. The homepage now has seven sections instead of eight: the separate RielArt relationship band was removed because the selected-work entry, the About paragraph, and Contact already carried its information. The Client Portal is presented inside the RielArt entry. Later the same day, the portrait and the hero name/focus lines were removed at Gabriel's request. The focus phrase moved to the footer, and the hero became a typographic statement whose clauses link to the three focus areas.
 
 ## Truth and disclosure rules
 

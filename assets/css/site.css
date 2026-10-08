@@ -39,6 +39,7 @@
   --link: #0b3bcf;
   --link-hover: #072a9a;
   --focus: #0b3bcf;
+  --clause-dim: #7586cc;
 
   /* The field: hero, contact, footer */
   --field: #0b3bcf;
@@ -74,6 +75,7 @@
   --link: #9fb6ff;
   --link-hover: #c9d6ff;
   --focus: #9fb6ff;
+  --clause-dim: #5466a8;
 
   --field: #1238b8;
   --field-ink: #ffffff;
@@ -135,13 +137,15 @@ h3,
 h4,
 p,
 ul,
+ol,
 dl,
 dd,
 figure {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   padding: 0;
   list-style: none;
 }
@@ -549,51 +553,138 @@ html:not(.js) .mobile-menu a {
   --link-hover: #fff;
 }
 
-.hero-grid {
+.hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-  column-gap: clamp(32px, 5vw, 96px);
-  align-items: end;
-  min-height: min(calc(100svh - var(--header-height) - 48px), 860px);
+  align-content: space-between;
+  gap: clamp(40px, 6svh, 72px);
+  min-height: min(calc(100svh - var(--header-height) - 48px), 860px, 80vw);
+  padding-block: clamp(48px, 9svh, 104px) clamp(32px, 5svh, 56px);
 }
 
-.hero-copy {
-  align-self: center;
-  padding-block: clamp(40px, 6.5svh, 80px);
+/* The statement is set as a contents page: each outcome clause runs on a
+   leader to the discipline it belongs to, which links to that section.
+   The type size follows the space left beside the notes, so every clause
+   stays on one line (the longest is about 8.4em wide). */
+.hero-statement {
+  --notes: 0px;
+  --leader-min: 0px;
+  --gap: 24px;
+  position: relative;
   container-type: inline-size;
 }
 
-.hero-name {
-  font-size: 1.125rem;
-  font-weight: 700;
-}
-
-.hero-focus {
-  margin-top: 4px;
-  color: var(--field-ink-2);
-  font-size: var(--fs-small);
-}
-
-/* Four clauses, four lines, at every width: the size follows the column
-   (the longest clause is about 8.4em wide). */
 .hero-title {
-  margin-top: clamp(24px, 3.5vw, 44px);
   font-size: var(--fs-display);
-  font-size: min(5.75rem, 11.6cqi, 9svh);
+  font-size: min(7rem, calc((100cqi - var(--notes) - var(--leader-min) - var(--gap)) / 8.4), 12.5svh);
   line-height: 0.98;
   letter-spacing: -0.035em;
   word-spacing: -0.06em;
   text-wrap: initial;
 }
 
-.hero-title span {
-  display: block;
+.hero-title .line {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.hero-title .clause {
+  display: inline-block;
   white-space: nowrap;
 }
 
+.hero-notes {
+  display: none;
+}
+
+@media (min-width: 721px) {
+  .hero-statement {
+    --notes: 13.75rem;
+    --leader-min: 2.5rem;
+  }
+
+  .hero-title .line:not(:first-child)::after {
+    content: "";
+    flex: 1;
+    min-width: var(--leader-min);
+    height: 2px;
+    margin-left: 0.3em;
+    margin-right: calc(var(--notes) + var(--gap));
+    background: rgba(255, 255, 255, 0.4);
+    transform-origin: left center;
+    transition: background-color 200ms ease;
+  }
+
+  .hero-notes {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--notes);
+    padding-top: 0.98em;
+    font-size: min(7rem, calc((100cqi - var(--notes) - var(--leader-min) - var(--gap)) / 8.4), 12.5svh);
+    line-height: 0.98;
+  }
+
+  .hero-notes li {
+    display: flex;
+    align-items: center;
+    height: 0.98em;
+    padding-top: 0.12em;
+  }
+
+  .hero-notes a {
+    display: inline-flex;
+    gap: 8px;
+    white-space: nowrap;
+    color: var(--field-ink-2);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    transition: color 200ms ease;
+  }
+
+  .hero-notes a:hover,
+  .hero-notes a:focus-visible {
+    color: #fff;
+  }
+
+  .hero-notes a span {
+    transition: transform 200ms var(--ease);
+  }
+
+  .hero-notes a:hover span {
+    transform: translateY(3px);
+  }
+
+  /* Pointing at a discipline lights the leader back to its clause. */
+  .hero-statement:has(li:nth-child(1) a:is(:hover, :focus-visible)) .line:nth-child(2)::after,
+  .hero-statement:has(li:nth-child(2) a:is(:hover, :focus-visible)) .line:nth-child(3)::after,
+  .hero-statement:has(li:nth-child(3) a:is(:hover, :focus-visible)) .line:nth-child(4)::after {
+    background: #fff;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-statement {
+    --notes: 15rem;
+  }
+}
+
+.hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--field-rule);
+}
+
 .hero-lead {
-  max-width: 36em;
-  margin-top: clamp(24px, 3vw, 36px);
+  max-width: 34em;
   font-size: var(--fs-lead);
   line-height: 1.5;
 }
@@ -603,7 +694,6 @@ html:not(.js) .mobile-menu a {
   flex-wrap: wrap;
   align-items: center;
   gap: 16px 28px;
-  margin-top: clamp(28px, 3.5vw, 44px);
 }
 
 .button-field {
@@ -625,26 +715,67 @@ html:not(.js) .mobile-menu a {
 }
 
 .hero-route {
-  max-width: 24em;
+  max-width: 17em;
   color: var(--field-ink-2);
   font-size: var(--fs-small);
 }
 
-/* The portrait sits on the bottom edge of the field: his desk is the line
-   where the colour ends and the page begins. */
-.portrait {
-  align-self: end;
+/* Entrance, once: the clauses rise into place, the leaders draw out to
+   their disciplines, then the notes arrive. Transform and opacity only. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title .clause {
+    animation: clause-rise 900ms var(--ease) both;
+  }
+
+  .hero-title .line:nth-child(2) .clause { animation-delay: 90ms; }
+  .hero-title .line:nth-child(3) .clause { animation-delay: 180ms; }
+  .hero-title .line:nth-child(4) .clause { animation-delay: 270ms; }
+
+  .hero-title .line::after {
+    animation: leader-draw 800ms var(--ease) both;
+  }
+
+  .hero-title .line:nth-child(2)::after { animation-delay: 650ms; }
+  .hero-title .line:nth-child(3)::after { animation-delay: 770ms; }
+  .hero-title .line:nth-child(4)::after { animation-delay: 890ms; }
+
+  .hero-notes li {
+    animation: note-in 600ms var(--ease) both;
+  }
+
+  .hero-notes li:nth-child(1) { animation-delay: 1050ms; }
+  .hero-notes li:nth-child(2) { animation-delay: 1170ms; }
+  .hero-notes li:nth-child(3) { animation-delay: 1290ms; }
+
+  .hero-foot {
+    animation: foot-in 800ms var(--ease) 420ms both;
+  }
 }
 
-.portrait img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+@keyframes clause-rise {
+  from {
+    transform: translateY(105%);
+  }
 }
 
-[data-theme="dark"] .portrait img {
-  filter: brightness(0.92);
+@keyframes leader-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+}
+
+@keyframes foot-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
 }
 
 /* ---------- Focus ---------- */
@@ -996,6 +1127,72 @@ html:not(.js) .mobile-menu a {
   letter-spacing: 0;
 }
 
+/* ---------- Scroll motion ----------
+   Two reading aids, CSS only: each outcome clause brightens into cobalt as
+   it rises into view, and each principle settles into place as it reaches
+   reading position. Browsers without scroll timelines show the
+   final state. */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The children move, not the anchored item, so in-page links from the
+       hero land exactly below the header. */
+    .focus-item > * {
+      animation: focus-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    .focus-item > .focus-clause {
+      animation: focus-rise linear both, clause-light linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 0% entry 70%, entry 20% cover 35%;
+    }
+
+    .principle {
+      animation: principle-read linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+  }
+}
+
+@keyframes focus-rise {
+  from {
+    opacity: 0;
+    transform: translateY(56px);
+  }
+}
+
+@keyframes clause-light {
+  from {
+    color: var(--clause-dim);
+  }
+}
+
+/* Movement only: dimming body-size text would break contrast. */
+@keyframes principle-read {
+  from {
+    transform: translateY(32px);
+  }
+}
+
+/* External-link arrows lean the way they point. */
+.text-link span,
+.route-link span,
+.nav-external span,
+.hero-route a span {
+  display: inline-block;
+  transition: transform 200ms var(--ease);
+}
+
+.text-link:hover span,
+.route-link:hover span,
+.nav-external:hover span,
+.hero-route a:hover span {
+  transform: translate(2px, -2px);
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -1200,12 +1397,6 @@ main:not(:has(.contact)) + .site-footer .container {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1180px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  }
-}
-
 @media (max-width: 960px) {
   :root {
     --header-height: 64px;
@@ -1246,12 +1437,6 @@ main:not(:has(.contact)) + .site-footer .container {
     position: static;
   }
 
-  .hero-grid {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    column-gap: 32px;
-    min-height: 0;
-  }
-
   .site-footer .container {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
@@ -1261,41 +1446,16 @@ main:not(:has(.contact)) + .site-footer .container {
   }
 }
 
-/* Portrait follows the statement and still lands on the field's edge. */
-@media (max-width: 720px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-copy {
-    padding-block: 40px 48px;
-  }
-
-  .portrait img {
-    aspect-ratio: 4 / 3.4;
-    object-position: 50% 30%;
-  }
-}
-
 @media (max-width: 640px) {
-  .hero-name {
-    font-size: 1rem;
-  }
-
   .hero-actions {
     display: grid;
     gap: 18px;
+    width: 100%;
   }
 
   .hero-actions .button {
     justify-content: space-between;
     width: 100%;
-  }
-
-  /* Phones get the photo edge to edge, sitting on the field's edge. */
-  .portrait {
-    width: auto;
-    margin-inline: calc(var(--gutter) * -1);
   }
 
   .venture-name {
