@@ -9,7 +9,7 @@ gmacovei.com explains Gabriel's professional focus across Digital Presence, Adve
 ## Technology
 
 - Static HTML, CSS, and JavaScript
-- Self-hosted Instrument Sans and Newsreader Italic (SIL Open Font License, see `assets/fonts/OFL.txt`); no font service or other third-party runtime
+- Self-hosted Atkinson Hyperlegible Next (SIL Open Font License, see `assets/fonts/OFL.txt`); no font service or other third-party runtime
 - Responsive light and dark themes
 - No build step or runtime framework
 - GitHub Pages-compatible routing and `CNAME`
@@ -34,7 +34,7 @@ python tools/site_audit.py
 
 The audit checks public routes, metadata, links, image references, structured data, indexability, legacy fallback behavior, duplicate IDs, homepage anchors, outdated positioning, shared cache versions, self-hosted font files, and the pre-paint `js` class.
 
-When shared CSS or JavaScript changes, update the `?v=` cache version in all eight HTML shells together.
+When shared CSS or JavaScript changes, update the `?v=` cache version in all eight HTML shells together (currently `20261008r1`).
 
 The current design system is described in `REDESIGN-NOTES.md`.
 

@@ -1,6 +1,6 @@
 # GMACOVEI Information Architecture
 
-Last updated: September 24, 2026
+Last updated: October 8, 2026
 
 ## Primary navigation
 
@@ -20,8 +20,8 @@ The logo and Gabriel Macovei wordmark link to `/`, so "Home" is not repeated in 
 
 - Section ID: `home`
 - H1: I help businesses look better online, reach more people, and work smarter.
-- Primary action: Explore My Work → `#work`
-- Secondary action: Visit RielArt → `https://rielart.com`
+- Primary action: Explore my work → `#work`
+- RielArt route: inline link in the sentence "Brand, website, and online advertising projects belong at RielArt ↗" → `https://rielart.com`
 - Purpose: Establish identity, positioning, location, and the commercial route without making the personal site a service page.
 - Portrait: The accessible portrait remains in the hero without a visible caption beneath it.
 
@@ -42,8 +42,8 @@ Business IT, cloud tools, integrations, automation, workflows, and practical AI 
 - Section ID: `work`
 - H2: Businesses, products, and systems I have helped shape.
 - Items:
-  - RielArt — Business
-  - RielArt Client Portal — Product
+  - RielArt — Business (H3)
+  - RielArt Client Portal — Product, nested inside the RielArt entry (H4)
 - Purpose: Show accurate, labelled work without fabricating clients or case studies.
 
 ### 4. About and working approach
@@ -56,14 +56,7 @@ Business IT, cloud tools, integrations, automation, workflows, and practical AI 
   - Compact skills list
 - Purpose: Consolidate the former About, Skills, Industries, and Outcomes sections into a personal professional profile.
 
-### 5. RielArt relationship
-
-- Section ID: `business`
-- H2: RielArt is the business home for client work.
-- Action: Visit RielArt → `https://rielart.com`
-- Purpose: Explain where commercial information and project inquiries belong.
-
-### 6. Writing
+### 5. Writing
 
 - Section ID: `writing`
 - H2: Notes on digital work and practical technology.
@@ -73,7 +66,7 @@ Business IT, cloud tools, integrations, automation, workflows, and practical AI 
   - How Small Businesses Can Implement AI Chatbots Without Code
 - Purpose: Present a balanced sample of current writing hosted on RielArt.
 
-### 7. Contact
+### 6. Contact
 
 - Section ID: `contact`
 - H2: Choose the right way to connect.
@@ -83,9 +76,7 @@ Business IT, cloud tools, integrations, automation, workflows, and practical AI 
   - Direct email → `hello@gmacovei.com`
 - Purpose: Send each visitor to the correct destination without adding a form.
 
-RielArt relationship also includes a short list headed "Three sites, three jobs" (H3): gmacovei.com (marked "You are here"), rielart.com ↗, and portal.rielart.com ↗, each with one line describing its role.
-
-### 8. Footer
+### 7. Footer
 
 - Concise personal description
 - Explore: Work, About, Writing, Contact
@@ -127,9 +118,9 @@ These remain accessible static fallbacks for GitHub Pages, use `noindex,follow`,
 
 - Exactly one H1 per public HTML document.
 - Homepage H2 headings identify major sections.
-- H3 headings identify focus areas, work items, the "How I work" and "Skills in practice" groups, the three-sites list, articles, and contact routes.
-- H4 headings identify the four working principles inside "How I work".
-- Eyebrows are decorative labels, not heading substitutes.
+- H3 headings identify focus areas, RielArt, the "How I work" and "Skills in practice" groups, articles, and contact routes.
+- H4 headings identify the Client Portal (inside RielArt) and the four working principles inside "How I work".
+- Section eyebrows were removed in October 2026; headings carry the structure.
 
 ## Link behavior
 

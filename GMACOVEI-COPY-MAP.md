@@ -1,6 +1,21 @@
 # GMACOVEI Copy Map
 
-Last updated: September 24, 2026
+Last updated: October 8, 2026
+
+## October 8, 2026 redesign changes
+
+No positioning, headline, focus area, description, principle, article, or contact destination was rewritten. Changes are limited to structure and presentation:
+
+- Removed: all section eyebrows ("Professional focus", "Selected work", "About", "Business work", "Writing", "Contact").
+- Removed: the RielArt relationship section ("RielArt is the business home for client work.", its two paragraphs, its Visit RielArt button, and the "Three sites, three jobs" list). The same facts remain in the RielArt work entry, the About paragraph, and Contact.
+- Removed: the hero "Visit RielArt" button. The hero route sentence "Brand, website, and online advertising projects belong at RielArt ↗" remains as the RielArt route.
+- Removed: the serif-italic accent on "systems they can actually use." in the About lead.
+- Removed: the decorative Client Portal plate ("Approved clients only" / "A clear place for approved client activity." / Progress, Milestones, Updates, Requests) and the RielArt plate line ("Brand / Website / Focused advertising").
+- Sentence case for actions: "Explore my work", "Get started on RielArt", "Visit rielart.com", "Open portal.rielart.com".
+- Work meta lines: "Business · Founder of RielArt" and "Product · Part of RielArt" (the portal's relationship to RielArt was already stated in the strategy).
+- Principles: each title now ends with a full stop because it is set inline before its sentence ("Protect ownership. Business accounts, data…").
+- Portrait alt text: "Gabriel Macovei seated at a desk in his office".
+
 
 ## September 24, 2026 redesign additions
 
