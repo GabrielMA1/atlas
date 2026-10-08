@@ -2,6 +2,25 @@
 
 Test date: October 8, 2026
 
+## Hero revision (later on October 8, 2026)
+
+The portrait and the hero name/focus lines were removed. The hero became a typographic contents page with clause-to-discipline leaders, a one-time entrance, and two scroll-linked reading aids. The re-run results are below. The rest of this report records the earlier pass the same day.
+
+- `python tools/site_audit.py`: PASS, 0 findings. The audit no longer requires a portrait; if one returns, it must still have no caption.
+- Horizontal overflow: 0 px at 320, 360, 600, 768, 961, 1024, 1180, 1280, and 1920. The headline is one line per clause at every width.
+- **Hero notes:**
+  - Vertical offset between each note and its leader is 0 px at 721, 768, 820, 1024, 1280, 1440, and 1920.
+  - No note crosses the container edge.
+  - Hovering a note lights only its own leader.
+  - Each note link lands its focus item exactly below the 72px header.
+- Entrance captured at 250, 700, 1100, and 2200 ms. The headline is readable by about 1 s, and the sequence completes in about 1.9 s.
+- **Scroll-linked motion:**
+  - The muted focus-clause colour was raised to 3.33:1 (light) and 3.5:1 (dark); the clauses are large text.
+  - The principles originally dimmed on entry, which failed contrast for 20px mobile text. They now only move.
+- **Computed contrast:** no element fails in either theme. Settled text is at least 5.61:1 (light) and 5.95:1 (dark).
+- **Lighthouse 12.6 (local):** 100 / 100 / 100 / 100 on mobile (LCP 1.6 s, CLS 0, TBT 0 ms) and on desktop (LCP 0.4 s, CLS 0, TBT 0 ms).
+- **Payload:** CSS 27,957 bytes raw / 7,071 gzip. No hero image is loaded.
+
 ## Executive result
 
 The October 2026 redesign passes all of the following:

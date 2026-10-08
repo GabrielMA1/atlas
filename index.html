@@ -29,7 +29,7 @@
   <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b0f1c" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.css?v=20261008r1">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20261008r2">
   <script>
     document.documentElement.classList.add("js");
     try {
@@ -145,21 +145,28 @@
 
   <main id="main-content" tabindex="-1">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="hero-name">Gabriel Macovei</p>
-          <p class="hero-focus">Digital Presence · Advertising Management · Practical Systems</p>
-          <h1 id="hero-title" class="hero-title"><span>I help businesses</span> <span>look better online,</span> <span>reach more people,</span> <span>and work smarter.</span></h1>
+      <div class="container hero-inner">
+        <div class="hero-statement">
+          <h1 id="hero-title" class="hero-title">
+            <span class="line"><span class="clause">I help businesses</span></span>
+            <span class="line"><span class="clause">look better online,</span></span>
+            <span class="line"><span class="clause">reach more people,</span></span>
+            <span class="line"><span class="clause">and work smarter.</span></span>
+          </h1>
+          <ol class="hero-notes" aria-label="Focus areas">
+            <li><a href="#digital-presence">Digital Presence <span aria-hidden="true">↓</span></a></li>
+            <li><a href="#advertising-management">Advertising Management <span aria-hidden="true">↓</span></a></li>
+            <li><a href="#practical-systems">Practical Systems <span aria-hidden="true">↓</span></a></li>
+          </ol>
+        </div>
+
+        <div class="hero-foot">
           <p class="hero-lead">I’m a digital professional working across digital presence, advertising management, business technology, automation, and practical systems.</p>
           <div class="hero-actions">
             <a class="button button-field" href="#work">Explore my work <span class="button-arrow" aria-hidden="true">↓</span></a>
             <p class="hero-route">Brand, website, and online advertising projects belong at <a href="https://rielart.com" target="_blank" rel="noopener noreferrer">RielArt&nbsp;<span aria-hidden="true">↗</span></a></p>
           </div>
         </div>
-
-        <figure class="portrait">
-          <img src="/images/gabriel-macovei-portrait.webp" width="640" height="800" alt="Gabriel Macovei seated at a desk in his office" fetchpriority="high" decoding="async">
-        </figure>
       </div>
     </section>
 
@@ -171,7 +178,7 @@
         </header>
 
         <div class="focus-list">
-          <article class="focus-item">
+          <article class="focus-item" id="digital-presence">
             <h3>Digital Presence</h3>
             <p class="focus-clause">Look better online.</p>
             <p class="focus-text">Helping businesses present themselves clearly online through website planning, content structure, brand consistency, user experience, analytics foundations, and practical digital improvements.</p>
@@ -182,7 +189,7 @@
             </ul>
           </article>
 
-          <article class="focus-item">
+          <article class="focus-item" id="advertising-management">
             <h3>Advertising Management</h3>
             <p class="focus-clause">Reach more people.</p>
             <p class="focus-text">Planning and managing focused Google Search or Meta advertising through clear campaign structure, targeting, messaging, conversion tracking, performance review, and practical optimization.</p>
@@ -193,7 +200,7 @@
             </ul>
           </article>
 
-          <article class="focus-item">
+          <article class="focus-item" id="practical-systems">
             <h3>Practical Systems</h3>
             <p class="focus-clause">Work smarter.</p>
             <p class="focus-text">Improving how business tools, cloud services, integrations, automation, workflows, and carefully selected AI capabilities support day-to-day work.</p>
@@ -379,7 +386,7 @@
             <img src="/images/logo-knockout.png" width="40" height="40" alt="">
             <span>Gabriel Macovei</span>
           </a>
-          <p>Personal website of Gabriel Macovei — digital presence, advertising management, and practical systems.</p>
+          <p>Digital Presence · Advertising Management · Practical Systems</p>
         </div>
         <nav class="footer-group" aria-labelledby="footer-explore-title">
           <p class="footer-group-title" id="footer-explore-title">Explore</p>
@@ -407,6 +414,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/site.js?v=20261008r1" defer></script>
+  <script src="/assets/js/site.js?v=20261008r2" defer></script>
 </body>
 </html>

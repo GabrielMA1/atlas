@@ -583,9 +583,9 @@ def check_refinement_requirements(
         homepage_source,
         flags=re.I | re.S,
     )
-    if not portrait_match:
-        errors.append("Homepage: portrait figure is missing")
-    elif re.search(r"<figcaption\b", portrait_match.group(1), flags=re.I):
+    # The portrait was removed from the site in October 2026. If one returns,
+    # it must still be shown without a caption.
+    if portrait_match and re.search(r"<figcaption\b", portrait_match.group(1), flags=re.I):
         errors.append("Homepage: portrait caption wrapper must be removed")
 
     if len(re.findall(r'class="work-action"', homepage_source)) != 2:
