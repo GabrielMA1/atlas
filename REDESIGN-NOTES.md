@@ -1,74 +1,83 @@
 # GMACOVEI Personal-Site Design Notes
 
-Updated: September 24, 2026
+Updated: October 8, 2026
 
-## Concept: the open frame and the three clauses
+## Why the site was redesigned again
 
-The approved headline already contains the site's structure. "I help businesses / look better online, / reach more people, / and work smarter." sets as four even lines, and its three clauses map directly to the three professional focus areas:
+The September system was competent but read as a template. Every section used the same eyebrow, H2 and right-hand intro. The page alternated navy, light and blue bands in a familiar SaaS rhythm. A condensed grotesk was paired with a serif-italic "human accent". Decorative plates stood in for the work. The RielArt relationship was also explained six times: the hero route line, the hero button, the work chapter, the About paragraph, a dedicated Business band, and Contact.
 
-- look better online → Digital Presence
-- reach more people → Advertising Management
-- work smarter → Practical Systems
+## Concept: plainly put
 
-The hero sets the headline in exactly those four lines on every width, and Professional Focus opens each area with its clause in a serif italic. A visitor reads the promise in the hero and sees the same words again beside the matching area in the next section. No copy was invented for this; it is the approved headline, split.
+Gabriel's proposition is clarity: systems people can understand, work that is documented, and accounts the business owns. The site should feel like the clearest brief you have been handed across a desk. Every decision below follows from that.
 
-The second device is the open frame from the GMACOVEI mark and the Open Graph card: a thin line bracket, open on one side, finished with a short blue diagonal step. It appears in only three places: around the hero portrait, inside the RielArt plate in Selected Work, and around the not-found and legacy-writing cards. It is not repeated as a clip-path on every panel.
+1. **One colour field.** The cobalt of the G mark (`#0b3bcf`, sampled from the logo's median tone) is used flat and at full strength for the hero, Contact, and footer. Everything between is paper and ink. There are no gradients, and blue is not used as a tint everywhere.
+2. **One typeface built for clarity.** Atkinson Hyperlegible Next (SIL OFL, self-hosted, variable 200–800, 34 KB) was designed so that no two letters can be confused. It suits someone whose principles are "keep systems understandable" and "make information clearer", and it looks nothing like the Inter/Instrument/Geist family that most templates use. Hierarchy comes only from size and weight. There are no italics, no second family, and no tracked uppercase.
+3. **Outcome first, discipline second.** The three headline clauses lead the Focus section in large cobalt type ("Look better online."), and the discipline name ("Digital Presence") sits beneath as a label. A visitor reads the promise in the hero and then sees each part of it explained.
+4. **The desk line.** The portrait is cropped 4:5 so that the front edge of Gabriel's desk ends exactly where the cobalt field ends and the page begins. It is a composition specific to this photograph, with no frame or ornament.
+5. **Square corners.** Buttons, photo and bands are square, like stationery. The only round shape is the theme toggle's hover area.
 
-## Palette and themes
+## Information architecture changes
 
-- Light: warm stone background (`#f3f1ec`), paper surfaces, deep ink text, GMACOVEI blue for links, labels, and the frame step.
-- Dark: a neutral, warm charcoal base (`#0d1016`) with navy reserved for the contrast bands. Dark mode is art-directed rather than inverted. The navy bands stay distinct from the charcoal page, the portrait is slightly dimmed, the frame turns light grey, and the RielArt plate is lifted so it separates from the page.
-- Contrast bands: Professional Focus and Contact use deep navy; the footer uses a darker ink; the RielArt relationship uses a deep GMACOVEI blue band. The page reads as light / dark / light / light / blue / light / dark, with the dark sections opening and closing the page.
-
-## Typography
-
-- **Instrument Sans** (variable weight 400–700, width 75–100%, SIL OFL, self-hosted, 57 KB latin subset) carries the whole system. Display headings use a slightly condensed width (86–88%) for composed line lengths; body copy uses the normal width. Small headings step back to normal width so they never feel cramped.
-- **Newsreader Italic** (400, SIL OFL, self-hosted, 24 KB) is reserved for human accents: the three focus clauses, one phrase in the About lead, the "You are here" note, and the skills separators.
-- The previous stack depended on Aptos, which is installed only on recent Windows and Office systems; every other platform fell back to a generic sans. Self-hosting one family gives every visitor the same identity with no third-party request. A metric-adjusted local fallback face limits reflow while the font loads, and the sans file is preloaded.
-- Small labels are sentence case, not tracked uppercase. There is no monospace.
+- **Removed** the RielArt relationship band (`#business`) and the "Three sites, three jobs" list. They repeated the work entry, the About paragraph and Contact.
+- **Removed** all section eyebrows. They repeated the navigation and the headings.
+- **Removed** the hero "Visit RielArt" button. The hero route sentence already links to RielArt.
+- **Nested** the Client Portal inside the RielArt entry. It is a RielArt product, and a single cobalt rule shows that relationship.
+- **Elevated** the four working principles into their own tinted band, set as large running sentences. "Protect ownership" is the most differentiating idea on the site and was previously small 2×2 text.
+- **Retired** the open-frame SVG ornament everywhere, including the 404 and legacy pages.
 
 ## Composition by section
 
-- **Header:** G mark and name on the left, navigation and RielArt ↗ on the right, and a drawn sun/moon theme icon. Below 961px it becomes a labelled "Menu" button that opens a full-screen list set in large type.
-- **Hero (desktop):** the name and focus line sit above the four-line headline in the left seven columns; the portrait in its open frame takes the right four. The frame draws once on load (skipped with reduced motion).
-- **Hero (tablet and mobile):** a portrait-and-name lockup, like a business card, with the focus areas stacked beside the photo, followed by the full four-line headline, summary, RielArt route, and both actions. On a 390 × 844 phone the whole statement and both buttons fit in the first viewport.
-- **Professional Focus:** a navy band with three rows. Each row has the clause (serif italic), then the area name and description, then its three details.
-- **Selected Work:** two chapters instead of cards. RielArt uses a large ink plate with the real R mark, an oversized RielArt wordmark, and the open frame. The frame opens with the scroll where CSS scroll-driven animation is supported and is simply present elsewhere. The Client Portal uses a pale-blue typographic plate with its statement and its four verified capabilities. Each chapter's copy adds one short, factual note on how it is shaped, with a blue rule. The chapters alternate sides on desktop. On phones the plates run edge to edge.
-- **About:** a large reading-size lead paragraph, then "How I work" (four principles with short blue rules) and "Skills in practice" set as one flowing typographic line with serif slashes. The separator that would start a new line is clipped, so no line begins or ends with a stray slash.
-- **RielArt relationship:** a blue band pairing the approved copy with a short list of the three sites and their jobs: gmacovei.com (you are here), rielart.com, and portal.rielart.com. This states the cross-property model in plain language.
-- **Writing:** a sticky heading column on desktop beside large article rows. Each title is the link, and the whole row is clickable. Screen readers hear "read on RielArt, opens in a new tab".
-- **Contact:** a navy closing band, with the heading on the left and the three routes as rows on the right. The business route is marked with a blue top rule.
-- **Footer:** darker ink with Explore and Connect groups (now including the Client Portal), legal links, and the small tracked GMACOVEI wordmark (`aria-hidden`).
+- **Header:** paper, sticky, with a hairline that appears on scroll. In dark mode the G mark becomes a knockout. Below 961px a solid ink Menu button opens a full-screen cobalt menu set in large type. At 360px and below the button shows only its icon, and its accessible name stays "Menu".
+- **Hero:** a cobalt field. The name and focus phrase come first, then the four-line headline, the summary, one white button, and the RielArt route. The headline is sized in container-query units (`min(5.75rem, 11.6cqi, 9svh)`), so it is always exactly four lines at any width and never pushes the hero past a short viewport. The portrait sits on the field's bottom edge in two columns down to 721px. Below that it follows the statement and runs edge to edge on phones.
+- **Focus:** the heading and intro sit in the margin column. The main column holds three outcome-led rows, each with its discipline and its details set as running text.
+- **Work:** a full-width heading. RielArt is set at wordmark scale beside its real R mark. Its description, services and link sit in the main column, and the Client Portal is nested beneath with one cobalt rule.
+- **About:** a reading-size lead paragraph. The principles band (pale cobalt tint) has each principle's name in cobalt followed by its sentence. Skills are set as one flowing line.
+- **Writing:** a sticky heading in the margin. Article rows are fully clickable through the title link.
+- **Contact:** the closing cobalt field. The destinations themselves are the large type ("Get started on RielArt", "Connect on LinkedIn", the email address), so they are easy to see and copy.
+- **Footer:** continues the cobalt field, separated by one rule, with the knockout G mark and a small GMACOVEI wordmark (`aria-hidden`).
+
+Paper-to-paper section changes are marked with a single content-width rule (`.section-ruled`) rather than a new colour band.
+
+## Palette (all pairs measured)
+
+| Role | Light | Dark |
+|---|---|---|
+| Paper | `#fbfaf7` | `#0b0f1c` |
+| Tint (principles band) | `#eceef6` | `#131a2e` |
+| Ink / secondary / muted | `#0f1733` / `#454c63` / `#5d6479` | `#eef0f6` / `#b4bacb` / `#9097ab` |
+| Link | `#0b3bcf` | `#9fb6ff` |
+| Field / text on field / secondary on field | `#0b3bcf` / `#fff` / `#c8d4fa` | `#1238b8` / `#fff` / `#c3cff7` |
+
+The lowest computed contrast for any visible text is 5.61:1 in light and 5.95:1 in dark.
 
 ## Motion
 
-- The hero portrait frame draws once on load (about 1.4 s, then the blue step).
-- The RielArt plate frame opens with the scroll (CSS `animation-timeline: view()`, progressive enhancement only).
-- Navigation underlines, arrow nudges on links and buttons, a short menu entrance, and stretched-link hover on articles.
-- No reveal-on-scroll choreography, parallax, scroll-jacking, or JavaScript animation. `prefers-reduced-motion: reduce` removes all of it and disables smooth scrolling.
-
-## Personal specificity and truth rules
-
-Everything on the page comes from first-party material: Gabriel's portrait, the G and R marks, the approved positioning, headline, focus areas, biography, principles and skills, the verified RielArt and Client Portal descriptions, and the real writing, contact, legal, and legacy destinations. The two new "how it is shaped" notes restate facts already recorded in `GMACOVEI-STRATEGY.md`: RielArt's two primary services, and the Client Portal's passwordless sign-in restricted to approved emails. There are no fabricated projects, metrics, testimonials, screenshots, status indicators, or technical metadata.
+Only state changes are animated: nav underline, button colour, the arrow on the hero button, and a short menu entrance. Nothing animates on scroll. `prefers-reduced-motion: reduce` removes all of it and smooth scrolling.
 
 ## Deliberately avoided
 
-Gradients, glass, glow, orbs, bento grids, pill clusters, big rounded cards, centred SaaS heroes, fade-in-on-scroll, decorative numbering, fake telemetry or dashboards, monospace styling, tracked-uppercase label overload, and AI imagery.
+Gradients, glass, glow, blobs, cards, pills, badges, sparkles, serif-italic accents, decorative numbering, monospace, tracked-uppercase labels, fake telemetry, fake screenshots or dashboards, scroll-triggered reveals, and a giant footer wordmark. Live RielArt and Portal screenshots were considered as real product imagery. They were not used because the live sites could not be reached during this pass, and screenshots would go stale.
+
+## Known characteristics
+
+- Atkinson Hyperlegible Next uses a slashed zero (for example in "2026"). This is intended by the typeface and has no alternate.
+- The face has no arrow glyphs, so ↗ ↓ → render from the system font.
 
 ## Architecture and maintenance
 
 - Static HTML, CSS, and vanilla JavaScript. No framework, build step, analytics, or runtime dependency.
-- `assets/css/site.css` is a single token-driven stylesheet. Colour, type, and spacing tokens live on `:root` and `[data-theme="dark"]`.
-- `assets/fonts/` holds the two self-hosted WOFF2 files and `OFL.txt`.
-- All eight HTML shells share identical header, mobile menu, and footer markup, and the same `?v=20260924r1` cache version for CSS and JavaScript.
-- The inline head script sets the `js` class and the theme before first paint, which prevents the no-JavaScript navigation fallback from causing layout shift.
+- `assets/css/site.css` (about 23 KB, down from 38 KB) is a single token-driven stylesheet. Colour tokens live on `:root` and `[data-theme="dark"]`.
+- `assets/fonts/` holds one WOFF2 file and `OFL.txt`.
+- New images: `gabriel-macovei-portrait.webp` (640 × 800 crop of the original portrait) and `logo-knockout.png` (white G for the cobalt footer).
+- All eight HTML shells share identical header, mobile menu, and footer markup, and the same `?v=20261008r1` cache version.
 
 ## Responsive breakpoints
 
 - Above 1180px: full desktop composition.
-- 961–1180px: Focus details move beneath each description; Selected Work copy widens.
-- 960px and below: menu button, hero lockup, single-column sections, sticky Writing heading released.
-- 640px and below: phone spacing, full-width actions, edge-to-edge work plates, stacked contact methods.
-- 360px and below: compact header so the full name, theme toggle, and Menu fit at 320px.
+- 961–1180px: wider portrait column.
+- 960px and below: Menu button, and single-column Focus, Work, About, Writing, and Contact. The hero keeps two columns.
+- 720px and below: single-column hero. The portrait follows the statement at 4:3.4 and still lands on the field's edge.
+- 640px and below: full-width hero button, edge-to-edge portrait, compact RielArt lockup.
+- 360px and below: icon-only Menu button so the name stays on one line.
 
 This redesign is local only. Deployment, DNS, live hosting, external services, and third-party systems were not changed.
