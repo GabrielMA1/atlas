@@ -23,7 +23,7 @@ The logo and Gabriel Macovei wordmark link to `/`, so "Home" is not repeated in 
 - Primary action: Explore my work → `#work`
 - RielArt route: inline link in the sentence "Brand, website, and online advertising projects belong at RielArt ↗" → `https://rielart.com`
 - Purpose: Establish identity, positioning, location, and the commercial route without making the personal site a service page.
-- Notes: from 721px, three links beside the headline clauses go to `#digital-presence`, `#advertising-management`, and `#practical-systems` (the focus items).
+- Notes: three links go to `#digital-presence`, `#advertising-management`, and `#practical-systems` (the focus items). From 721px they sit beside their clauses on leaders. Below that, they form a short index under the headline.
 - Portrait: none. The photo was removed from the site in October 2026.
 
 ### 2. Professional focus

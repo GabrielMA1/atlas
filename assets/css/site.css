@@ -543,7 +543,10 @@ html:not(.js) .mobile-menu a {
   color: var(--muted);
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   A contents page set at poster scale. "I help businesses" is the subject,
+   quieter; the three outcomes are loud, and each runs on a leader to the
+   discipline that delivers it. The disciplines link to their sections. */
 
 .hero {
   background: var(--field);
@@ -551,31 +554,36 @@ html:not(.js) .mobile-menu a {
   --focus: #fff;
   --link: #fff;
   --link-hover: #fff;
+  /* Muted clause colour for the hover state: 3.65:1 on the light-theme
+     field and 4.06:1 on the dark one (large text). */
+  --field-muted: #94aaf1;
 }
 
 .hero-inner {
   display: grid;
-  align-content: space-between;
-  gap: clamp(40px, 6svh, 72px);
+  grid-template-rows: 1fr auto;
+  gap: clamp(36px, 5svh, 64px);
   min-height: min(calc(100svh - var(--header-height) - 48px), 860px, 80vw);
-  padding-block: clamp(48px, 9svh, 104px) clamp(32px, 5svh, 56px);
+  padding-block: clamp(40px, 6svh, 72px) clamp(32px, 5svh, 56px);
 }
 
-/* The statement is set as a contents page: each outcome clause runs on a
-   leader to the discipline it belongs to, which links to that section.
-   The type size follows the space left beside the notes, so every clause
-   stays on one line (the longest is about 8.4em wide). */
+/* The type size follows the space left beside the disciplines, so every
+   clause stays on one line (the longest is 8.3em, plus 0.32em before its
+   leader) and every
+   leader keeps a readable length. */
 .hero-statement {
+  --label-size: 1rem;
   --notes: 0px;
   --leader-min: 0px;
-  --gap: 24px;
+  --gap: 20px;
   position: relative;
+  align-self: center;
   container-type: inline-size;
 }
 
 .hero-title {
   font-size: var(--fs-display);
-  font-size: min(7rem, calc((100cqi - var(--notes) - var(--leader-min) - var(--gap)) / 8.4), 12.5svh);
+  font-size: min(6.5rem, calc((100cqi - var(--notes) - var(--leader-min) - var(--gap)) / 8.7), 12svh);
   line-height: 0.98;
   letter-spacing: -0.035em;
   word-spacing: -0.06em;
@@ -593,83 +601,139 @@ html:not(.js) .mobile-menu a {
 .hero-title .clause {
   display: inline-block;
   white-space: nowrap;
+  transition: color 260ms ease;
 }
 
-.hero-notes {
+.hero-title .line-subject .clause {
+  color: var(--field-ink-2);
+}
+
+.hero-title .leader {
   display: none;
+}
+
+/* Phones: the disciplines become a short index under the headline, each
+   on its own leader, in the same order as the clauses they answer. */
+.hero-notes {
+  display: grid;
+  margin-top: 28px;
+  font-size: var(--label-size);
+}
+
+.hero-notes li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.note-leader {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  transform-origin: left center;
+}
+
+.hero-notes a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: color 220ms ease;
+}
+
+.hero-notes a span {
+  transition: transform 220ms var(--ease);
+}
+
+.hero-notes a:hover span,
+.hero-notes a:focus-visible span {
+  transform: translateY(3px);
 }
 
 @media (min-width: 721px) {
   .hero-statement {
-    --notes: 13.75rem;
-    --leader-min: 2.5rem;
+    --label-size: clamp(1rem, 0.35rem + 1.1vw, 1.375rem);
+    --notes: calc(var(--label-size) * 13.6);
+    --leader-min: 4rem;
   }
 
-  .hero-title .line:not(:first-child)::after {
-    content: "";
+  .hero-title .leader {
+    display: block;
+    position: relative;
     flex: 1;
     min-width: var(--leader-min);
     height: 2px;
-    margin-left: 0.3em;
+    margin-left: 0.32em;
     margin-right: calc(var(--notes) + var(--gap));
     background: rgba(255, 255, 255, 0.4);
     transform-origin: left center;
-    transition: background-color 200ms ease;
+  }
+
+  /* A brighter line that runs back from the discipline to its clause. */
+  .hero-title .leader::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 420ms var(--ease);
+  }
+
+  .note-leader {
+    display: none;
   }
 
   .hero-notes {
-    display: block;
     position: absolute;
     top: 0;
     right: 0;
     width: var(--notes);
+    margin: 0;
     padding-top: 0.98em;
-    font-size: min(7rem, calc((100cqi - var(--notes) - var(--leader-min) - var(--gap)) / 8.4), 12.5svh);
+    font-size: min(6.5rem, calc((100cqi - var(--notes) - var(--leader-min) - var(--gap)) / 8.7), 12svh);
     line-height: 0.98;
   }
 
   .hero-notes li {
-    display: flex;
-    align-items: center;
     height: 0.98em;
-    padding-top: 0.12em;
+    padding-top: 0.06em;
   }
 
   .hero-notes a {
-    display: inline-flex;
-    gap: 8px;
-    white-space: nowrap;
-    color: var(--field-ink-2);
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
-    transition: color 200ms ease;
+    min-height: 0;
+    font-size: var(--label-size);
+    letter-spacing: -0.01em;
   }
 
-  .hero-notes a:hover,
-  .hero-notes a:focus-visible {
+  /* Pointing at (or tabbing to) a discipline isolates its pairing: the
+     leader lights back to its clause and the other outcomes step back to a
+     muted colour that still clears 3:1. */
+  .hero-statement:has(.hero-notes a:is(:hover, :focus-visible)) .line:not(.line-subject) .clause,
+  .hero-notes:has(a:is(:hover, :focus-visible)) a:not(:hover, :focus-visible) {
+    color: var(--field-muted);
+  }
+
+  .hero-statement:has(li:nth-child(1) a:is(:hover, :focus-visible)) .line:nth-child(2) .clause,
+  .hero-statement:has(li:nth-child(2) a:is(:hover, :focus-visible)) .line:nth-child(3) .clause,
+  .hero-statement:has(li:nth-child(3) a:is(:hover, :focus-visible)) .line:nth-child(4) .clause {
     color: #fff;
   }
 
-  .hero-notes a span {
-    transition: transform 200ms var(--ease);
-  }
-
-  .hero-notes a:hover span {
-    transform: translateY(3px);
-  }
-
-  /* Pointing at a discipline lights the leader back to its clause. */
-  .hero-statement:has(li:nth-child(1) a:is(:hover, :focus-visible)) .line:nth-child(2)::after,
-  .hero-statement:has(li:nth-child(2) a:is(:hover, :focus-visible)) .line:nth-child(3)::after,
-  .hero-statement:has(li:nth-child(3) a:is(:hover, :focus-visible)) .line:nth-child(4)::after {
-    background: #fff;
+  .hero-statement:has(li:nth-child(1) a:is(:hover, :focus-visible)) .line:nth-child(2) .leader::after,
+  .hero-statement:has(li:nth-child(2) a:is(:hover, :focus-visible)) .line:nth-child(3) .leader::after,
+  .hero-statement:has(li:nth-child(3) a:is(:hover, :focus-visible)) .line:nth-child(4) .leader::after {
+    transform: scaleX(1);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-statement {
-    --notes: 15rem;
+    --leader-min: 8rem;
+    --gap: 24px;
   }
 }
 
@@ -720,41 +784,56 @@ html:not(.js) .mobile-menu a {
   font-size: var(--fs-small);
 }
 
-/* Entrance, once: the clauses rise into place, the leaders draw out to
-   their disciplines, then the notes arrive. Transform and opacity only. */
+/* Entrance. Act one is CSS so the headline never waits for a script: the
+   clauses rise into place on first paint. Act two draws the leaders and
+   brings in the disciplines as each line arrives.
+   - Phones: plain CSS. The index rows are short and similar, so fixed
+     timing works and no animation library is downloaded.
+   - 721px and up: GSAP (loaded by site.js only here) measures each leader so
+     the lines draw at one speed. Until it takes over, act two waits in its
+     start state, with a fallback that reveals everything at 2.4s. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-title .clause {
-    animation: clause-rise 900ms var(--ease) both;
+    animation: clause-rise 760ms var(--ease) both;
   }
 
-  .hero-title .line:nth-child(2) .clause { animation-delay: 90ms; }
-  .hero-title .line:nth-child(3) .clause { animation-delay: 180ms; }
-  .hero-title .line:nth-child(4) .clause { animation-delay: 270ms; }
+  .hero-title .line:nth-child(2) .clause { animation-delay: 80ms; }
+  .hero-title .line:nth-child(3) .clause { animation-delay: 160ms; }
+  .hero-title .line:nth-child(4) .clause { animation-delay: 240ms; }
+}
 
-  .hero-title .line::after {
-    animation: leader-draw 800ms var(--ease) both;
+@media (prefers-reduced-motion: no-preference) and (max-width: 720px) {
+  .note-leader {
+    animation: leader-draw 620ms cubic-bezier(0.65, 0, 0.35, 1) both;
   }
 
-  .hero-title .line:nth-child(2)::after { animation-delay: 650ms; }
-  .hero-title .line:nth-child(3)::after { animation-delay: 770ms; }
-  .hero-title .line:nth-child(4)::after { animation-delay: 890ms; }
-
-  .hero-notes li {
-    animation: note-in 600ms var(--ease) both;
+  .hero-notes a {
+    animation: note-in 500ms var(--ease) both;
   }
 
-  .hero-notes li:nth-child(1) { animation-delay: 1050ms; }
-  .hero-notes li:nth-child(2) { animation-delay: 1170ms; }
-  .hero-notes li:nth-child(3) { animation-delay: 1290ms; }
+  .hero-notes li:nth-child(1) .note-leader { animation-delay: 420ms; }
+  .hero-notes li:nth-child(2) .note-leader { animation-delay: 540ms; }
+  .hero-notes li:nth-child(3) .note-leader { animation-delay: 660ms; }
+  .hero-notes li:nth-child(1) a { animation-delay: 900ms; }
+  .hero-notes li:nth-child(2) a { animation-delay: 1020ms; }
+  .hero-notes li:nth-child(3) a { animation-delay: 1140ms; }
+}
 
-  .hero-foot {
-    animation: foot-in 800ms var(--ease) 420ms both;
+@media (prefers-reduced-motion: no-preference) and (min-width: 721px) {
+  .js .hero[data-motion="pending"] .leader {
+    transform: scaleX(0);
+    animation: motion-fallback 1ms 2.4s forwards;
+  }
+
+  .js .hero[data-motion="pending"] .hero-notes a {
+    opacity: 0;
+    animation: motion-fallback 1ms 2.4s forwards;
   }
 }
 
 @keyframes clause-rise {
   from {
-    transform: translateY(105%);
+    transform: translateY(130%);
   }
 }
 
@@ -767,14 +846,14 @@ html:not(.js) .mobile-menu a {
 @keyframes note-in {
   from {
     opacity: 0;
-    transform: translateX(-12px);
+    transform: translateX(-10px);
   }
 }
 
-@keyframes foot-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
+@keyframes motion-fallback {
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -792,6 +871,12 @@ html:not(.js) .mobile-menu a {
 
 .focus-clause {
   order: -1;
+  justify-self: start;
+  padding-bottom: 0.1em;
+  /* Arrival mark: when a hero discipline link lands here, a rule draws
+     under the outcome, the same line that left the hero. */
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 3px no-repeat;
+  transition: background-size 900ms var(--ease) 250ms;
   color: var(--link);
   font-size: var(--fs-clause);
   font-weight: 700;
@@ -813,6 +898,10 @@ html:not(.js) .mobile-menu a {
 
 .focus-item .inline-list {
   margin-top: 16px;
+}
+
+.focus-item:target .focus-clause {
+  background-size: 100% 3px;
 }
 
 /* ---------- Work ---------- */

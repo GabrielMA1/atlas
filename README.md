@@ -11,7 +11,7 @@ gmacovei.com explains Gabriel's professional focus across Digital Presence, Adve
 - Static HTML, CSS, and JavaScript
 - Self-hosted Atkinson Hyperlegible Next (SIL Open Font License, see `assets/fonts/OFL.txt`); no font service or other third-party runtime
 - Responsive light and dark themes
-- No build step or runtime framework
+- No build step or runtime framework. GSAP core is vendored in `assets/vendor/gsap/` and loaded only for the wide-screen hero sequence
 - GitHub Pages-compatible routing and `CNAME`
 
 ## Local preview
@@ -34,7 +34,7 @@ python tools/site_audit.py
 
 The audit checks public routes, metadata, links, image references, structured data, indexability, legacy fallback behavior, duplicate IDs, homepage anchors, outdated positioning, shared cache versions, self-hosted font files, and the pre-paint `js` class.
 
-When shared CSS or JavaScript changes, update the `?v=` cache version in all eight HTML shells together (currently `20261008r2`).
+When shared CSS or JavaScript changes, update the `?v=` cache version in all eight HTML shells together (currently `20261009r1`).
 
 The current design system is described in `REDESIGN-NOTES.md`.
 
