@@ -2,6 +2,43 @@
 
 Test date: October 8, 2026
 
+## Hero refinement (October 9, 2026)
+
+The hero was refined: hierarchy inside the headline, larger disciplines on measured leaders, hover/focus isolation, a phone index, an arrival mark, and a GSAP-sequenced act two on wide screens. Results:
+
+- `python tools/site_audit.py`: PASS, 0 findings (audit unchanged). `node --check assets/js/site.js` and `git diff --check`: pass.
+- **Overflow and headline:** 0 px horizontal overflow at 320, 360, 600, 768, 961, 1024, 1180, 1280, and 1920. The headline is four single lines at every width.
+- **Leader geometry (721, 800, 960, 1024, 1180, 1280, 1440, 1920):**
+  - Every leader ends exactly 20px (tablet) or 24px (desktop) before its discipline.
+  - The shortest leader is 68px on tablet and 134px on desktop.
+  - Discipline labels sit within 1–3px of their leader's centre line.
+  - No label crosses the container edge.
+- **Interaction:**
+  - Hovering or tabbing to a discipline lights its leader and switches the other clauses to `#94aaf1` (3.65:1 light, 4.06:1 dark).
+  - The keyboard focus ring is visible.
+  - Enter lands the target 0px below the 72px header and draws the arrival rule.
+- **Motion paths:**
+  - **Default:** act two hands from CSS to GSAP and clears its inline styles.
+  - **Reduced motion:** static from the first frame, and GSAP is not requested.
+  - **GSAP blocked:** final state immediately.
+  - **JavaScript disabled:** everything visible.
+  - **Both scripts blocked:** the CSS fallback reveals act two at 2.4s.
+  - **Resize from 1440 to 390 mid-sequence:** no errors, and the final state is correct.
+  - **GSAP requests:** made only at 721px and up with motion allowed. None at 390px, and none under reduced motion.
+  - **CTA timing:** the summary and button are visible from the first frame on every path and width.
+- **Console and network:** no console errors, warnings, or failed requests at 1440, 820, or 390, in either theme.
+- **Computed contrast:** no failures in either theme.
+  - The lowest settled text is 5.61:1 (light) and 5.95:1 (dark).
+  - The mid-scroll Focus clause state is 3.33:1 and 3.5:1, on large text.
+- **Lighthouse 12.6 (local):**
+  - Mobile: 100 / 100 / 100 / 100 (LCP 1.7s, CLS 0, TBT 0ms).
+  - Desktop: 100 / 100 / 100 / 100 (LCP 0.5s, CLS 0, TBT 0ms).
+  - An intermediate build that loaded GSAP on every device scored 95 on mobile (TBT 220ms); this is why GSAP now loads only at 721px and up.
+- **Payload:**
+  - `site.js` is 7.8 KB raw / 2.7 KB gzip.
+  - CSS is 31.1 KB raw / 8.0 KB gzip.
+  - GSAP adds 28.3 KB gzip, and only for wide screens with motion allowed.
+
 ## Hero revision (later on October 8, 2026)
 
 The portrait and the hero name/focus lines were removed. The hero became a typographic contents page with clause-to-discipline leaders, a one-time entrance, and two scroll-linked reading aids. The re-run results are below. The rest of this report records the earlier pass the same day.

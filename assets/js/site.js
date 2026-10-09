@@ -157,4 +157,70 @@
   document.querySelectorAll("[data-year]").forEach((element) => {
     element.textContent = String(new Date().getFullYear());
   });
+
+  // Hero, act two, from 721px up. The clauses rise in CSS on first paint;
+  // here GSAP draws each leader at one speed (so longer lines take longer) and
+  // brings in its discipline as the line arrives. GSAP is fetched only for
+  // this layout; phones use a CSS sequence and never download it. Without
+  // GSAP, or with reduced motion, the hero is shown in its final state.
+  const hero = document.querySelector(".hero[data-motion]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const wideHero = window.matchMedia("(min-width: 721px)");
+
+  const showHeroFinalState = () => {
+    hero.dataset.motion = "done";
+  };
+
+  const runHeroSequence = () => {
+    const { gsap } = window;
+    if (!gsap || hero.dataset.motion !== "pending") {
+      showHeroFinalState();
+      return;
+    }
+
+    const leaders = [...hero.querySelectorAll(".hero-title .leader")];
+    const labels = [...hero.querySelectorAll(".hero-notes a")];
+    const targets = [...leaders, ...labels];
+
+    // Measure before scaling; offsetWidth ignores transforms.
+    const lengths = leaders.map((leader) => leader.offsetWidth);
+
+    gsap.set(leaders, { scaleX: 0, transformOrigin: "left center" });
+    gsap.set(labels, { opacity: 0, x: -10 });
+    hero.dataset.motion = "running";
+
+    // Start once the outcome clauses have mostly risen, measured from
+    // navigation start so a slow script load never stacks extra delay.
+    const timeline = gsap.timeline({
+      delay: Math.max(0, 0.55 - performance.now() / 1000),
+      defaults: { ease: "power3.out" },
+      onComplete: () => {
+        gsap.set(targets, { clearProps: "transform,opacity" });
+        showHeroFinalState();
+      }
+    });
+
+    leaders.forEach((leader, index) => {
+      const duration = gsap.utils.clamp(0.35, 0.85, lengths[index] / 760);
+      const at = index * 0.13;
+      timeline
+        .to(leader, { scaleX: 1, duration, ease: "power2.inOut" }, at)
+        .to(labels[index], { opacity: 1, x: 0, duration: 0.5 }, at + duration * 0.78);
+    });
+
+    // Keyboard users never wait on the sequence.
+    hero.addEventListener("focusin", () => timeline.progress(1), { once: true });
+  };
+
+  if (hero) {
+    if (reducedMotion.matches || !wideHero.matches) {
+      showHeroFinalState();
+    } else {
+      const script = document.createElement("script");
+      script.src = "/assets/vendor/gsap/gsap.min.js?v=3.15.0";
+      script.onload = runHeroSequence;
+      script.onerror = showHeroFinalState;
+      document.head.append(script);
+    }
+  }
 })();

@@ -1,0 +1,8 @@
+GSAP 3.15.0 (gsap.min.js, core only), copied unmodified from the npm package
+"gsap@3.15.0" (dist/gsap.min.js).
+
+Copyright 2026, GreenSock. All rights reserved.
+Used under GreenSock's standard "no charge" license, which permits free use,
+including commercial use: https://gsap.com/standard-license
+
+The copyright header inside gsap.min.js is retained.
